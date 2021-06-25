@@ -1,0 +1,21 @@
+# This entry filters for all J1939 projects and their corresponding files which contain
+# the word "issue" and ".pdf". It stores the retrieved data as IssueReports.json and
+# IssueReports.yaml files in the current working directory and downloads the files into
+# the J1939 directory. "filename-only" specifies that the downloaded files' filenames
+# are not combinations of project-distribution-version-filename but just the filename.
+# "mkdir" makes sure that the output directory is created.
+#
+# HINT: Omitting the options "filter-distributions" and "filter-versions" would lead to
+# the same filter result. Filters are Regex compliant. Multiple configurations can be
+# added to the file.
+#
+- filter-projects     : ".*J1939.*"         # Regex pattern to filter projects (optional)
+  filter-distributions: ".*"                # Regex pattern to filter project distributions (optional)
+  filter-versions     : ".*"                # Regex pattern to filter distribution versions (optional)
+  filter-files        : ".*issue.*\\.pdf"   # Regex pattern to filter version files (optional)
+  json                : "IssueReports.json" # Output path for JSON file (optional)
+  yaml                : "IssueReports.yaml" # Output path for YAML file (optional)
+  download            :                     # Download options
+    path              : "J1939"             # Download folder
+    filename-only     : true                # If true, downloaded files' filenames will only consist of the filename
+    mkdir             : true                # Creates the output directory
