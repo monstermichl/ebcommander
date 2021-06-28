@@ -1,5 +1,5 @@
 # Overview
-ebcommander is intended as an interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline.
+EBCommander is intended as an interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline.
 
 ---
 
@@ -11,7 +11,16 @@ The script depends on the following Python packages
 
 ---
 
-## Usage
+## Use as module
+Import EBCommand.
+> from ebcommander import EbCommand
+
+Create an instance (this starts the initial data retrieval which may take a while, therefore, it should be considered to run it asynchronously).
+> commander = EbCommand('your-user', 'your-password')
+
+---
+
+## Use from the Commandline
 ### Direct call
 For simple requests (e.g. just to get a glimpse at a specific file) the script can be called with the following arguments
 
