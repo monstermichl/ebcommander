@@ -1,4 +1,5 @@
 import argparse
+import os
 
 from pathlib     import Path
 from yaml        import load, CLoader
@@ -28,7 +29,7 @@ def main():
         with open(path, 'w') as f:
             f.write(content)
 
-    def download(path: str, command_object: ebcommander.EbCommand, filename_only: bool = False):
+    def download(path: str, command_object: EbCommand, filename_only: bool = False):
         path = Path(path).absolute()
         if path.exists():
             command_object.download(str(path), filename_only)
