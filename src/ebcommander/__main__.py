@@ -1,8 +1,8 @@
 import argparse
-import ebcommander
 
 from pathlib     import Path
 from yaml        import load, CLoader
+from ebcommander import EbCommand
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--config'     , help='Path to config for more complex setups'           , required=False, type=str)
 
     args    = parser.parse_args()
-    command = ebcommander.EbCommand(args.user, args.password, args.proxy_http, args.proxy_https)
+    command = EbCommand(args.user, args.password, args.proxy_http, args.proxy_https)
 
     def write_file(path: str, content: str):
         with open(path, 'w') as f:
