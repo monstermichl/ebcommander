@@ -35,6 +35,14 @@ class Size:
     The Size class represents a file size by its value and by its unit
     """
     def __init__(self, value: float, unit: SizeUnit) -> None:
+        """
+        Size constructor
+
+        :param value: Size value
+        :type value: float
+        :param unit: Size unit
+        :type unit: SizeUnit
+        """
         self.value = value
         self.unit  = unit
 
@@ -43,11 +51,10 @@ class Size:
         """
         Creates Size object from a size string
 
-        Args:
-            s (str): String to parse (e.g. 2.4 MB, 643B, 6.2kB, ...)
-
-        Returns:
-            Size: Size object if successful, otherwise None
+        :param s: String to parse (e.g. 2.4 MB, 643B, 6.2kB, ...)
+        :type s: str
+        :return: Size object if successful, otherwise None
+        :rtype: Size
         """
         s    = re.sub('\s+', '', s.strip())
         size = re.match(r'^((\d+)(\.\d+)?)(\w+)$', s)
@@ -84,9 +91,10 @@ class Sublink:
         """
         Sublink constructor
 
-        Args:
-            url_base (str): URL base (e.g. http://localhost)
-            tag (Tag): BeautifulSoup4 href tag
+        :param url_base: URL base (e.g. http://localhost)
+        :type url_base: str
+        :param tag: BeautifulSoup4 href tag
+        :type tag: Tag
         """
         self.url_base    = url_base
         self.tag         = tag
@@ -105,13 +113,14 @@ class EbCommandSublink(Sublink):
     The EbCommandSublink class inherits from Sublink. It contains (if found) tag siblings
     information (e.g. upload time, size) which belong to the downloadable EB file
     """
-    def __init__(self, url_base: str, tag) -> None:
+    def __init__(self, url_base: str, tag: Tag) -> None:
         """
-        EbCommandSublink constructor
+        EbCommandlink constructor
 
-        Args:
-            url_base (str): URL base (e.g. http://localhost)
-            tag (Tag): BeautifulSoup4 href tag
+        :param url_base: URL base (e.g. http://localhost)
+        :type url_base: str
+        :param tag: BeautifulSoup4 href tag
+        :type tag: Tag
         """
         super().__init__(url_base, tag)
 
@@ -141,13 +150,16 @@ class EbCommandEntry:
     """
     def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -> None:
         """
-        EbCommandEntry constructor.
+        EbCommandEntry constructor
 
-        Args:
-            sublink (EbCommandSublink): EbCommandSublink which represents the actual entry location
-            id (int): EB Command reference id
-            subentry_type (type, optional): Specifies of which type the subentries are. Defaults to None
-            subentries (list, optional): List of subentries. Defaults to None
+        :param sublink: EbCommandSublink which represents the actual entry location
+        :type sublink: EbCommandSublink
+        :param id: EB Command reference id
+        :type id: int
+        :param subentry_type: Specifies of which type the subentries are. Defaults to None
+        :type subentry_type: type, optional
+        :param subentries: List of subentries. Defaults to None
+        :type subentries: list, optional
         """
         self.sublink     = sublink
         self.description = sublink.description
@@ -160,9 +172,10 @@ class EbCommandEntry:
         """
         Adds a new subentry
 
-        Args:
-            subentries (list): A list of subentries or a single entry of the given subentry-type
-            subentry_type (type): Subentry type
+        :param subentries: A list of subentries or a single entry of the given subentry-type
+        :type subentries: list
+        :param subentry_type: Subentry type
+        :type subentry_type: type
         """
         if subentries is not None and subentry_type is not None:
             if isinstance(subentries, subentry_type):
@@ -175,11 +188,10 @@ class EbCommandEntry:
         """
         Creates a dictionary representation of the object
 
-        Args:
-            sub_description (str, optional): Key description of the subentry list. Defaults to 'sub'
-
-        Returns:
-            dict: Dictionary representation of the object
+        :param sub_description: Key description of the subentry list. Defaults to 'sub'
+        :type sub_description: str, optional
+        :return: Dictionary representation of the object
+        :rtype: dict
         """
         KEY_DESCRIPTION = 'description'
         KEY_ID          = 'id'
@@ -196,17 +208,14 @@ class EbCommandEntry:
             dictionary[KEY_SUBFOLDER] = [subfolder.to_dict() for subfolder in self.subentries]
         return dictionary
 
-    def filter(self, subs_patterns: List[str]) -> EbCommandEntry | None:
+    def filter(self, subs_patterns: List[str]) -> EbCommandEntry:
         """
         Filters all subentries based on their descriptions
 
-        Args:
-            subs_patterns (List[str]): List of patterns where each pattern is applicable
-                                       for a subentry layer
-
-        Returns:
-            EbCommandEntry: If all patterns found at least one element a copy of the filtered
-                            object is returned, otherwise None
+        :param subs_patterns: List of patterns where each pattern is applicable for a subentry layer
+        :type subs_patterns: List[str]
+        :return: If all patterns found at least one element a copy of the filtered object is returned, otherwise None
+        :rtype: EbCommandEntry
         """
         self_copy  = copy.copy(self)
         subentries = []
@@ -238,9 +247,10 @@ class EbCommandFile(EbCommandEntry):
         """
         EbCommandFile constructor
 
-        Args:
-            sublink (EbCommandSublink): EbCommandSublink which represents the actual entry location
-            id (int): EB Command reference id
+        :param sublink: EbCommandSublink which represents the actual entry location
+        :type sublink: Sublink
+        :param id: EB Command reference id
+        :type id: int
         """
         super().__init__(sublink, id)
         
@@ -251,8 +261,8 @@ class EbCommandFile(EbCommandEntry):
         """
         Creates a dictionary representation of the object
 
-        Returns:
-            dict: Dictionary representation of the object
+        :return: Dictionary representation of the object
+        :rtype: dict
         """
         KEY_UPLOAD_TIME = 'upload-time'
         KEY_SIZE        = 'size'
@@ -283,10 +293,12 @@ class EbCommandVersion(EbCommandEntry):
         """
         EbCommandVersion constructor
 
-        Args:
-            sublink (EbCommandSublink): EbCommandSublink which represents the actual entry location
-            id (int): EB Command reference id
-            files (List[EbCommandFile], optional): List of version files. Defaults to None
+        :param sublink: EbCommandSublink which represents the actual entry location
+        :type sublink: Sublink
+        :param id: EB Command reference id
+        :type id: int
+        :param files: List of version files. Defaults to None
+        :type files: List[EbCommandFile], optional
         """
         super().__init__(sublink, id, EbCommandFile, files)
         self.files = self.subentries
@@ -295,8 +307,8 @@ class EbCommandVersion(EbCommandEntry):
         """
         Adds file entries
 
-        Args:
-            files (List[EbCommandFile]): A list of files or a single file entry
+        :param files: A list of files or a single file entry
+        :type files: List[EbCommandFile]
         """
         self.add_subentries(files, EbCommandFile)
 
@@ -304,8 +316,8 @@ class EbCommandVersion(EbCommandEntry):
         """
         Creates a dictionary representation of the object
 
-        Returns:
-            dict: Dictionary representation of the object
+        :return: Dictionary representation of the object
+        :rtype: dict
         """
         return super().to_dict(sub_description='files')
 
@@ -322,8 +334,8 @@ class EbCommandDistribution(EbCommandEntry):
         """
         Adds version entries
 
-        Args:
-            versions (List[EbCommandVersion]): A list of versions or a single version entry
+        :param versions: A list of versions or a single version entry
+        :type versions: List[EbCommandVersion]
         """
         self.add_subentries(versions, EbCommandVersion)
 
@@ -331,8 +343,8 @@ class EbCommandDistribution(EbCommandEntry):
         """
         Creates a dictionary representation of the object
 
-        Returns:
-            dict: Dictionary representation of the object
+        :return: Dictionary representation of the object
+        :rtype: dict
         """
         return super().to_dict(sub_description='versions')
 
@@ -349,8 +361,8 @@ class EbCommandProject(EbCommandEntry):
         """
         Adds distribution entries
 
-        Args:
-            distributions (List[EbCommandDistribution]): A list of distributions or a single distribution
+        :param distributions: A list of distributions or a single distribution
+        :type distributions: List[EbCommandDistribution]
         """
         self.add_subentries(distributions, EbCommandDistribution)
 
@@ -358,8 +370,8 @@ class EbCommandProject(EbCommandEntry):
         """
         Creates a dictionary representation of the object
 
-        Returns:
-            dict: Dictionary representation of the object
+        :return: Dictionary representation of the object
+        :rtype: dict
         """
         return super().to_dict(sub_description='distributions')
 
@@ -373,11 +385,14 @@ class EbCommandDownloadFile:
         """
         EbCommandDownloadFile constructor
 
-        Args:
-            file (EbCommandFile): EbCommandFile
-            version (EbCommandVersion): EbCommandVersion to which the file belongs
-            distribution (EbCommandDistribution): EbCommandDistribution to which the version belongs
-            project (EbCommandProject): EbCommandProject to which the distribution belongs
+        :param file: EbCommandFile
+        :type file: EbCommandFile
+        :param version: EbCommandVersion to which the file belongs
+        :type version: EbCommandVersion
+        :param distribution: EbCommandDistribution to which the version belongs
+        :type distribution: EbCommandDistribution
+        :param project: EbCommandProject to which the distribution belongs
+        :type project: EbCommandProject
         """
         self.file         = file
         self.version      = version
@@ -390,8 +405,8 @@ class EbCommandDownloadFile:
         """
         Returns a string representation of the object
 
-        Returns:
-            str: String representation of the object
+        :return: String representation of the object
+        :rtype: str
         """
         s = ''
         for i, description in enumerate([
@@ -435,11 +450,14 @@ class EbCommand:
         """
         EbCommand constructor
 
-        Args:
-            user (str): EB Command username
-            password (str): EB Command user password
-            proxy_http (str, optional): HTTP proxy address (e.g. http://localhost:1234). Defaults to None
-            proxy_https (str, optional): HTTPS proxy address (e.g. https://localhost:1234). Defaults to None
+        :param user: EB Command username
+        :type user: str
+        :param password: EB Command user password
+        :type password: str
+        :param proxy_http: HTTP proxy address (e.g. http://localhost:1234). Defaults to None
+        :type proxy_http: str, optional
+        :param proxy_https: HTTPS proxy address (e.g. https://localhost:1234). Defaults to None
+        :type proxy_https: str, optional
         """
         self._session     = None
         self._user        = user
@@ -457,8 +475,8 @@ class EbCommand:
         """
         Returns a list of downloadable files
 
-        Returns:
-            List[EbCommandDownloadFile]: List of downloadable files
+        :return: List of downloadable files
+        :rtype: List[EbCommandDownloadFile]
         """
         download_files = []
         for project in self._projects:
@@ -472,8 +490,8 @@ class EbCommand:
         """
         Returns a JSON representation of the object
 
-        Returns:
-            str: JSON representation of the object
+        :return: JSON representation of the object
+        :rtype: str
         """
         return json.dumps([project.to_dict() for project in self._projects], indent=3)
 
@@ -481,8 +499,8 @@ class EbCommand:
         """
         Returns a YAML representation of the object
 
-        Returns:
-            str: YAML representation of the object
+        :return: YAML representation of the object
+        :rtype: str
         """
         return dump([project.to_dict() for project in self._projects])
 
@@ -490,11 +508,10 @@ class EbCommand:
         """
         Downloads the retrieved files to the specified folder
 
-        Args:
-            path_output (str): Output path
-            filename_only (bool, optional): If true, only the file description is used as filename,
-                                            otherwise the filename is a combination of project,
-                                            distribution, version and file description. Defaults to False
+        :param path_output: Output path
+        :type path_output: str
+        :param filename_only: If true, only the file description is used as filename, otherwise the filename is a combination of project, distribution, version and file description. Defaults to False
+        :type filename_only: bool, optional
         """
         for download_file in self.files():
             content = self._request(download_file.url)
@@ -516,14 +533,16 @@ class EbCommand:
         """
         Returns a copy of the current object with a filtered project list
 
-        Args:
-            pattern_projects (str, optional): Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR
-            pattern_distributions (str, optional): Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR
-            pattern_versions (str, optional): Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR
-            pattern_files (str, optional): Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR
-
-        Returns:
-            EbCommand: Copy of the current object with a filtered project list
+        :param pattern_projects: Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR
+        :type pattern_projects: str, optional
+        :param pattern_distributions: Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR
+        :type pattern_distributions: str, optional
+        :param pattern_versions: Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR
+        :type pattern_versions: str, optional
+        :param pattern_files: Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR
+        :type pattern_files: str, optional
+        :return: Copy of the current object with a filtered project list
+        :rtype: EbCommand
         """
         self_copy = copy.copy(self)
         projects  = []
@@ -540,14 +559,12 @@ class EbCommand:
 
     def _filter_duplicates(self, folders: List[EbCommandEntry]) -> List[EbCommandEntry]:
         """
-        Filters EbCommandFolder duplicates. Duplicates could appear if the parsed page
-        contains several links to the same folder
+        Filters EbCommandFolder duplicates. Duplicates could appear if the parsed page contains several links to the same folder
 
-        Args:
-            folders (List[EbCommandFolder]): EbCommandFolder list (e.g. project, distribution, ...)
-
-        Returns:
-            List[EbCommandFolder]: EbCommandFolder list without duplicates
+        :param folders: EbCommandFolder list (e.g. project, distribution, ...)
+        :type folders: List[EbCommandEntry]
+        :return: EbCommandFolder list without duplicates
+        :rtype: List[EbCommandEntry]
         """
         for i in reversed(range(0, len(folders))):
             filtered = list(filter(lambda x: x.id == folders[i].id, folders))
@@ -561,8 +578,8 @@ class EbCommand:
         """
         Retrieves all projects from EB Command
 
-        Returns:
-            List[EbCommandProject]: List of retrieved projects
+        :return: List of retrieved projects
+        :rtype: List[EbCommandProject]
         """
         projects = []
         html     = self._request(EbCommand._PATH_LOGIN,
@@ -583,11 +600,10 @@ class EbCommand:
         """
         Retrieves all distributions of the given project from EB Command
 
-        Args:
-            project (EbCommandProject): Project from which to get the distributions
-
-        Returns:
-            List[EbCommandDistribution]: List of project distributions
+        :param project: Project from which to get the distributions
+        :type project: EbCommandProject
+        :return: List of project distributions
+        :rtype: List[EbCommandDistribution]
         """
         distributions = []
         html          = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_PROJECT_ID: project.id }, post=False)
@@ -603,11 +619,10 @@ class EbCommand:
         """
         Retrieves all versions of the given distribution from EB Command
 
-        Args:
-            distribution (EbCommandDistribution): Distribution from which to get the versions
-
-        Returns:
-            List[EbCommandVersion]: List of distribution versions
+        :param distribution: Distribution from which to get the versions
+        :type distribution: EbCommandDistribution
+        :return: List of distribution versions
+        :rtype: List[EbCommandVersion]
         """
         versions = []
         html     = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_DISTRIBUTION, EbCommand._KEY_ID: distribution.id }, post=False)
@@ -623,11 +638,10 @@ class EbCommand:
         """
         Retrieves all files of the given version from EB Command
 
-        Args:
-            version (EbCommandVersion): Version from which to get the files
-
-        Returns:
-            List[EbCommandFile]: List of version files
+        :param version: Version from which to get the files
+        :type version: EbCommandVersion
+        :return: List of version files
+        :rtype: List[EbCommandFile]
         """
         files = []
         html  = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_VERSION, EbCommand._KEY_ID: version.id }, post=False)
@@ -641,13 +655,14 @@ class EbCommand:
         """
         Gets all sublinks (href links) below a specific element which fulfills the given conditions
 
-        Args:
-            html_element (Tag): BeautifulSoup4 tag below which the sublinks are searched
-            path (str): URL subpath (e.g. deploy.pl)
-            conditions (dict): parameters and according patterns the href must contain
-
-        Returns:
-            List[EbCommandSublink]: List of sublinks which fulfil the given conditions
+        :param html_element: BeautifulSoup4 tag below which the sublinks are searched
+        :type html_element: Tag
+        :param path: URL subpath (e.g. deploy.pl)
+        :type path: str
+        :param conditions: Parameters and according patterns the href must contain
+        :type conditions: dict
+        :return: List of sublinks which fulfil the given conditions
+        :rtype: List[EbCommandSublink]
         """
         sublinks = []
 
@@ -658,17 +673,18 @@ class EbCommand:
                 sublinks.append(sublink)
         return sublinks
 
-    def _parse_sublink(self, tag, path: str, conditions: dict) -> EbCommandSublink | None:
+    def _parse_sublink(self, tag: Tag, path: str, conditions: dict) -> EbCommandSublink | None:
         """
         Parses a sublink (href) and returns a EbCommandSublink if all conditons are fulfilled
 
-        Args:
-            tag (Tag): BeautifulSoup4 href tag
-            path (str): URL subpath (e.g. deploy.pl)
-            conditions (dict): parameters and according patterns the href must contain
-
-        Returns:
-            EbCommandSublink: EbCommandSublink if all conditions were fulfilled, otherwise None
+        :param tag: BeautifulSoup4 href tag
+        :type tag: Tag
+        :param path: URL subpath (e.g. deploy.pl)
+        :type path: str
+        :param conditions: parameters and according patterns the href must contain
+        :type conditions: dict
+        :return: EbCommandSublink if all conditions were fulfilled, otherwise None
+        :rtype: EbCommandSublink
         """
         sublink = EbCommandSublink(EbCommand._URL_BASE, tag)
         ok      = True
@@ -688,28 +704,27 @@ class EbCommand:
         """
         Builds EB Command URL with the given path (e.g. deploy.pl) and parameters
 
-        Args:
-            path (str): URL subpath (e.g. deploy.pl)
-            params (dict, optional): Dictionary with parameter names and values. Defaults to None
-
-        Returns:
-            str: EB Command URL
+        :param path: URL subpath (e.g. deploy.pl)
+        :type path: str
+        :param params: Dictionary with parameter names and values. Defaults to None
+        :type params: dict, optional
+        :return: EB Command URL
+        :rtype: str
         """
         return urljoin(EbCommand._URL_BASE, path + (f'?{urlencode(params)}' if params else ''))
 
-    def _request(self, path: str, data: dict = None, post: bool = False):
+    def _request(self, path: str, data: dict = None, post: bool = False) -> Tag | any | None:
         """
         Requests data from EB Command
 
-        Args:
-            path (str): 
-            params (dict, optional): Dictionary with parameter names and values. Defaults to None
-            post (bool, optional): If true, a POST request is sent, otherwise a GET request. Defaults to False
-
-        Returns:
-            any: If the request was successful and the returned data was HTML, a BeautifulSoup4 tag element.
-                 If the request was successful and the returned data was not HTML, the requested content.
-                 Else, None
+        :param path: URL subpath (e.g. deploy.pl)
+        :type path: str
+        :param data: Dictionary with parameter names and values. Defaults to None
+        :type data: dict, optional
+        :param post: If true, a POST request is sent, otherwise a GET request. Defaults to False
+        :type post: bool, optional
+        :return: If the request was successful and the returned data was HTML, a BeautifulSoup4 tag element. If the request was successful and the returned data was not HTML, the requested content. Else, None
+        :rtype: any
         """
         params_common = { 'proxies': self._proxies, 'verify': False }
         content       = None
