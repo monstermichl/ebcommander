@@ -1,5 +1,5 @@
 # Overview
-ebcommander.py is intended to be used to request data from EBCommand (command.elektrobit.com) via commandline.
+ebcommander is intended to be used as interaction layer between Python and EBCommand (command.elektrobit.com). It can either be used as a module or directly via Commandline.
 
 ---
 
