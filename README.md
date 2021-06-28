@@ -1,5 +1,5 @@
 # Overview
-ebcommander is intended to be used as interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline.
+ebcommander is intended as an interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline.
 
 ---
 
