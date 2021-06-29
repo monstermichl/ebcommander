@@ -13,6 +13,7 @@ from typing       import List
 from urllib.parse import parse_qs, urlencode, urljoin, urlparse
 from enum         import Enum
 from yaml         import dump
+from pathlib      import Path
 
 
 PATTERN_ANY_CHAR = r'\.*'
@@ -97,8 +98,7 @@ class Sublink:
         :type tag: Tag
         """
         self.url_base    = url_base
-        self.tag         = tag
-        self.description = re.sub(r'\s+', ' ', unicodedata.normalize('NFKC', self.tag.text.strip()))
+        self.description = re.sub(r'\s+', ' ', unicodedata.normalize('NFKC', tag.text.strip()))
         self.href        = tag.attrs.get('href')
         self.url         = urljoin(self.url_base, self.href)
 
@@ -106,6 +106,11 @@ class Sublink:
 
         self.path   = url_parsed.path
         self.params = { key: value[0] for key, value in parse_qs(url_parsed.query).items() }
+
+        """
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
+        """
 
 
 class EbCommandSublink(Sublink):
@@ -124,7 +129,7 @@ class EbCommandSublink(Sublink):
         """
         super().__init__(url_base, tag)
 
-        table_row = self.tag.find_parent('tr')
+        table_row = tag.find_parent('tr')
         if table_row:
             for table_data in table_row.find_all('td'):
                 if hasattr(table_data, 'text'):
@@ -141,6 +146,11 @@ class EbCommandSublink(Sublink):
                                                     int(upload_time.group(6)))
                     elif size:
                         self.size = size
+
+        """
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
+        """
 
 
 class EbCommandEntry:
@@ -400,6 +410,7 @@ class EbCommandDownloadFile:
         self.project      = project
         self.description  = self.file.description
         self.url          = self.file.sublink.url
+        self.upload_time  = self.file.upload_time
 
     def __str__(self) -> str:
         """
@@ -504,7 +515,7 @@ class EbCommand:
         """
         return dump([project.to_dict() for project in self._projects])
 
-    def download(self, path_output: str, filename_only: bool = False):
+    def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False):
         """
         Downloads the retrieved files to the specified folder
 
@@ -514,15 +525,18 @@ class EbCommand:
         :type filename_only: bool, optional
         """
         for download_file in self.files():
-            content = self._request(download_file.url)
+            if not filename_only:
+                file_name = str(download_file)
+            else:
+                file_name = download_file.description
+
+            path_file = Path(os.path.join(path_output, file_name))
+            content   = None
+            
+            if not path_file.exists() or not newer_only or (datetime.fromtimestamp(path_file.stat().st_mtime) <= download_file.upload_time):
+                content = self._request(download_file.url)
 
             if content:
-                if not filename_only:
-                    file_name = str(download_file)
-                else:
-                    file_name = download_file.description
-                    
-                path_file = os.path.join(path_output, file_name)
                 with open(path_file, 'wb') as f:
                     f.write(content)
 
@@ -544,10 +558,10 @@ class EbCommand:
         :return: Copy of the current object with a filtered project list
         :rtype: EbCommand
         """
-        self_copy = copy.copy(self)
+        self_copy = copy.deepcopy(self)
         projects  = []
 
-        for project in self._projects:
+        for project in self_copy._projects:
             if re.match(pattern_projects, project.description):
                 project = project.filter([pattern_distributions, pattern_versions, pattern_files])
 
