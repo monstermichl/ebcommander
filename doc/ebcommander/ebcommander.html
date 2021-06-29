@@ -1,0 +1,2796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>ebcommander.ebcommander API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ebcommander.ebcommander</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from __future__ import annotations # Used to state return types of own class within a class
+
+import requests;
+import re
+import json
+import copy
+import os
+import unicodedata
+
+from datetime     import datetime
+from bs4          import BeautifulSoup, Tag
+from typing       import List
+from urllib.parse import parse_qs, urlencode, urljoin, urlparse
+from enum         import Enum
+from yaml         import dump
+from pathlib      import Path
+
+
+PATTERN_ANY_CHAR = r&#39;\.*&#39;
+
+
+class SizeUnit(Enum):
+    &#34;&#34;&#34;
+    The SizeUnit enum represents file size units
+    &#34;&#34;&#34;
+    UNKNOWN    = 0
+    BYTE       = 1
+    KILO_BYTE  = 2
+    MEGA_BYTE  = 3
+    GIGA_BYTE  = 4
+    TERRA_BYTE = 5
+
+
+class Size:
+    &#34;&#34;&#34;
+    The Size class represents a file size by its value and by its unit
+    &#34;&#34;&#34;
+    def __init__(self, value: float, unit: SizeUnit) -&gt; None:
+        &#34;&#34;&#34;
+        Size constructor
+
+        Parameters
+        ----------
+        value : float
+            Size value
+        unit : SizeUnit
+            Size unit
+        &#34;&#34;&#34;
+        self.value = value
+        self.unit  = unit
+
+    @staticmethod
+    def parse(s: str) -&gt; Size | None:
+        &#34;&#34;&#34;
+        Creates Size object from a size string
+
+        Parameters
+        ----------
+        s : str
+            String to parse (e.g. 2.4 MB, 643B, 6.2kB, ...)
+
+        Returns
+        -------
+        Size
+            Size object if successful, otherwise None
+        &#34;&#34;&#34;
+        s    = re.sub(&#39;\s+&#39;, &#39;&#39;, s.strip())
+        size = re.match(r&#39;^((\d+)(\.\d+)?)(\w+)$&#39;, s)
+
+        if size:
+            value      = float(size.group(1))
+            unit       = None
+            first_char = size.group(4)[0].upper()
+
+            for entry in (
+                (&#39;B&#39;, SizeUnit.BYTE      ),
+                (&#39;K&#39;, SizeUnit.KILO_BYTE ),
+                (&#39;M&#39;, SizeUnit.MEGA_BYTE ),
+                (&#39;G&#39;, SizeUnit.GIGA_BYTE ),
+                (&#39;T&#39;, SizeUnit.TERRA_BYTE),
+            ):
+                if first_char == entry[0]:
+                    unit = entry[1]
+                    break
+
+            if unit:
+                size = Size(value, unit)
+            else:
+                size = None
+        return size
+
+
+class Sublink:
+    &#34;&#34;&#34;
+    The Sublink class represents an HTML href-tag but also stores its text, its full
+    URL - based on the URL base path - and its parameters
+    &#34;&#34;&#34;
+    def __init__(self, url_base: str, tag: Tag) -&gt; None:
+        &#34;&#34;&#34;
+        Sublink constructor
+
+        Parameters
+        ----------
+        url_base : str
+            URL base (e.g. http://localhost)
+        tag : Tag
+            BeautifulSoup4 href tag
+        &#34;&#34;&#34;
+        self.url_base    = url_base
+        self.description = re.sub(r&#39;\s+&#39;, &#39; &#39;, unicodedata.normalize(&#39;NFKC&#39;, tag.text.strip()))
+        self.href        = tag.attrs.get(&#39;href&#39;)
+        self.url         = urljoin(self.url_base, self.href)
+
+        url_parsed = urlparse(self.href)
+
+        self.path   = url_parsed.path
+        self.params = { key: value[0] for key, value in parse_qs(url_parsed.query).items() }
+
+        &#34;&#34;&#34;
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3
+        &#34;&#34;&#34;
+
+
+class EbCommandSublink(Sublink):
+    &#34;&#34;&#34;
+    The EbCommandSublink class inherits from Sublink. It contains (if found) tag siblings
+    information (e.g. upload time, size) which belong to the downloadable EB file
+    &#34;&#34;&#34;
+    def __init__(self, url_base: str, tag: Tag) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandSublink constructor
+
+        Parameters
+        ----------
+        url_base : str
+            URL base (e.g. http://localhost)
+        tag : Tag
+            BeautifulSoup4 href tag
+        &#34;&#34;&#34;
+        super().__init__(url_base, tag)
+
+        table_row = tag.find_parent(&#39;tr&#39;)
+        if table_row:
+            for table_data in table_row.find_all(&#39;td&#39;):
+                if hasattr(table_data, &#39;text&#39;):
+                    text        = table_data.text.strip()
+                    upload_time = re.match(r&#39;(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})&#39;, text)
+                    size        = Size.parse(text)
+
+                    if upload_time:
+                        self.upload_time = datetime(int(upload_time.group(1)),
+                                                    int(upload_time.group(2)),
+                                                    int(upload_time.group(3)),
+                                                    int(upload_time.group(4)),
+                                                    int(upload_time.group(5)),
+                                                    int(upload_time.group(6)))
+                    elif size:
+                        self.size = size
+
+        &#34;&#34;&#34;
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3
+        &#34;&#34;&#34;
+
+
+class EbCommandEntry:
+    &#34;&#34;&#34;
+    The EbCommandEntry class represents the base class for an entry in the EbCommand
+    hierarchy (e.g. project, distribution, version, file)
+    &#34;&#34;&#34;
+    def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandEntry constructor
+
+        Parameters
+        ----------
+        sublink : EbCommandSublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        subentry_type : type, optional
+            Specifies of which type the subentries are. Defaults to None
+        subentries : list, optional
+            List of subentries. Defaults to None
+        &#34;&#34;&#34;
+        self.sublink     = sublink
+        self.description = sublink.description
+        self.id          = id
+        self.subentries  = []
+
+        self.add_subentries(subentries, subentry_type)
+
+    def add_subentries(self, subentries: list, subentry_type: type):
+        &#34;&#34;&#34;
+        Adds a new subentry
+
+        Parameters
+        ----------
+        subentries : list
+            A list of subentries or a single entry of the given subentry-type
+        subentry_type : type
+            Subentry type
+        &#34;&#34;&#34;
+        if subentries is not None and subentry_type is not None:
+            if isinstance(subentries, subentry_type):
+                self.subentries.append(subentries)
+            elif isinstance(subentries, list) or isinstance(subentries, tuple):
+                for subfolder in subentries:
+                    self.add_subentries(subfolder, subentry_type)
+
+    def to_dict(self, sub_description: str = &#39;sub&#39;) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Parameters
+        ----------
+        sub_description : str, optional
+            Key description of the subentry list. Defaults to &#39;sub&#39;
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        KEY_DESCRIPTION = &#39;description&#39;
+        KEY_ID          = &#39;id&#39;
+        KEY_URL         = &#39;url&#39;
+        KEY_SUBFOLDER   = sub_description
+        dictionary      = \
+        {
+            KEY_DESCRIPTION: self.description,
+            KEY_ID         : self.id,
+            KEY_URL        : self.sublink.url,
+        }
+
+        if len(self.subentries) &gt; 0:
+            dictionary[KEY_SUBFOLDER] = [subfolder.to_dict() for subfolder in self.subentries]
+        return dictionary
+
+    def filter(self, subs_patterns: List[str]) -&gt; EbCommandEntry:
+        &#34;&#34;&#34;
+        Filters all subentries based on their descriptions
+
+        Parameters
+        ----------
+        subs_patterns : List[str]
+            List of patterns where each pattern is applicable for a subentry layer
+
+        Returns
+        -------
+        EbCommandEntry
+            If all patterns found at least one element a copy of the filtered object is returned, otherwise None
+        &#34;&#34;&#34;
+        self_copy  = copy.copy(self)
+        subentries = []
+        
+        if len(subs_patterns) &gt; 0:
+            for subentry in self_copy.subentries:
+                if len(subs_patterns) &gt; 1:
+                    subentry = subentry.filter(subs_patterns[1:])
+                
+                if subentry:
+                    if re.match(subs_patterns[0], subentry.description):
+                        subentries.append(subentry)
+                    else:
+                        subentry = None
+
+            # refill sufolders (done this way instead of using self_copy.subfolders = subfolders,
+            # to keep referenced lists (distributions, version, files, ...) up-to-date)
+            self_copy.subentries.clear()
+            self_copy.subentries.extend(subentries)
+
+        return self_copy if len(self_copy.subentries) &gt; 0 else None
+
+
+class EbCommandFile(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandFile class represents a file in the EbCommand hierarchy
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandFile constructor
+
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        &#34;&#34;&#34;
+        super().__init__(sublink, id)
+        
+        self.upload_time = sublink.upload_time
+        self.size        = sublink.size
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        KEY_UPLOAD_TIME = &#39;upload-time&#39;
+        KEY_SIZE        = &#39;size&#39;
+
+        dictionary = super().to_dict()
+
+        dictionary[KEY_UPLOAD_TIME] = self.upload_time.strftime(f&#39;%Y-%m-%d %H:%M:%S&#39;)
+
+        for entry in (
+            (SizeUnit.BYTE      ,  &#39;B&#39;),
+            (SizeUnit.KILO_BYTE , &#39;KB&#39;),
+            (SizeUnit.MEGA_BYTE , &#39;MB&#39;),
+            (SizeUnit.GIGA_BYTE , &#39;GB&#39;),
+            (SizeUnit.TERRA_BYTE, &#39;TB&#39;),
+        ):
+            if self.size.unit == entry[0]:
+                dictionary[KEY_SIZE] = f&#39;{self.size.value} {entry[1]}&#39;
+                break
+        return dictionary
+
+
+
+class EbCommandVersion(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandVersion class represents a distribution version in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, files: List[EbCommandFile] = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandVersion constructor
+
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        files : List[EbCommandFile], optional
+            List of version files. Defaults to None
+        &#34;&#34;&#34;
+        super().__init__(sublink, id, EbCommandFile, files)
+        self.files = self.subentries
+
+    def add_files(self, files: List[EbCommandFile]):
+        &#34;&#34;&#34;
+        Adds file entries
+
+        Parameters
+        ----------
+        files : List[EbCommandFile]
+            A list of files or a single file entry
+        &#34;&#34;&#34;
+        self.add_subentries(files, EbCommandFile)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;files&#39;)
+
+
+class EbCommandDistribution(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, versions: List[EbCommandVersion] = None) -&gt; None:
+        super().__init__(sublink, id, EbCommandVersion, versions)
+        self.versions = self.subentries
+
+    def add_versions(self, versions: List[EbCommandVersion]):
+        &#34;&#34;&#34;
+        Adds version entries
+
+        Parameters
+        ----------
+        versions : List[EbCommandVersion]
+            A list of versions or a single version entry
+        &#34;&#34;&#34;
+        self.add_subentries(versions, EbCommandVersion)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;versions&#39;)
+
+
+class EbCommandProject(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandProject class represents a project in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, distributions: List[EbCommandDistribution] = None) -&gt; None:
+        super().__init__(sublink, id, EbCommandDistribution, distributions)
+        self.distributions = self.subentries
+
+    def add_distributions(self, distributions: List[EbCommandDistribution]):
+        &#34;&#34;&#34;
+        Adds distribution entries
+
+        Parameters
+        ----------
+        distributions : List[EbCommandDistribution]
+            A list of distributions or a single distribution
+        &#34;&#34;&#34;
+        self.add_subentries(distributions, EbCommandDistribution)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;distributions&#39;)
+
+
+class EbCommandDownloadFile:
+    &#34;&#34;&#34;
+    The EbCommandDownloadFile is a collection of all necessary information to download
+    a file from EBCommand.
+    &#34;&#34;&#34;
+    def __init__(self, file: EbCommandFile, version: EbCommandVersion, distribution: EbCommandDistribution, project: EbCommandProject) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandDownloadFile constructor
+
+        Parameters
+        ----------
+        file : EbCommandFile
+            EbCommandFile
+        version : EbCommandVersion
+            EbCommandVersion to which the file belongs
+        distribution : EbCommandDistribution
+            EbCommandDistribution to which the version belongs
+        project : EbCommandProject
+            EbCommandProject to which the distribution belongs
+        &#34;&#34;&#34;
+        self.file         = file
+        self.version      = version
+        self.distribution = distribution
+        self.project      = project
+        self.description  = self.file.description
+        self.url          = self.file.sublink.url
+        self.upload_time  = self.file.upload_time
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a string representation of the object
+
+        Returns
+        -------
+        str
+            String representation of the object
+        &#34;&#34;&#34;
+        s = &#39;&#39;
+        for i, description in enumerate([
+            self.project.description     ,
+            self.distribution.description,
+            self.version.description     ,
+            self.description
+        ]):
+            s = s + (&#39;-&#39; if i &gt; 0 else &#39;&#39;) + description.replace(&#39;\\&#39;, &#39;-&#39;).replace(&#39;/&#39;, &#39;-&#39;)
+        return s
+
+
+class EbCommand:
+    &#34;&#34;&#34;
+    The EbCommand class represents the interface to interact with the Elekrobit Command Server.
+    &#34;&#34;&#34;
+
+    # URL information
+    _URL_BASE             = &#39;https://command.elektrobit.com/command/mod_perl/&#39;
+    _PATH_LOGIN           = &#39;login.pl&#39;
+    _PATH_DEPLOY          = &#39;deploy.pl&#39;
+    _PATH_ATTACHMENT      = &#39;attachment.pl&#39;
+
+    # HTML param keys
+    _KEY_DO               = &#39;Do&#39;
+    _KEY_USER             = &#39;Al&#39;
+    _KEY_PASSWORD         = &#39;Passwd&#39;
+    _KEY_PROJECT_ID       = &#39;ProjectId&#39;
+    _KEY_ID               = &#39;Id&#39;
+
+    # DO types
+    _DO_TYPE_LOGIN        = &#39;LOGIN&#39;
+    _DO_TYPE_DISTRIBUTION = &#39;DISTR&#39;
+    _DO_TYPE_VERSION      = &#39;VERSION&#39;
+    _DO_TYPE_GET          = &#39;GET&#39;
+
+    # patterns
+    _PATTERN_ID           = r&#39;\d+&#39;
+
+    def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommand constructor
+
+        Parameters
+        ----------
+        user : str
+            EB Command username
+        password : str
+            EB Command user password
+        proxy_http : str, optional
+            HTTP proxy address (e.g. http://localhost:1234). Defaults to None
+        proxy_https : str, optional
+            HTTPS proxy address (e.g. https://localhost:1234). Defaults to None
+        &#34;&#34;&#34;
+        self._session     = None
+        self._user        = user
+        self._password    = password
+        self._proxies     = {}
+
+        if proxy_http:
+            self._proxies[&#39;http&#39;] = proxy_http
+        if proxy_https:
+            self._proxies[&#39;https&#39;] = proxy_https
+
+        self._projects    = self._get_projects()
+
+    def files(self) -&gt; List[EbCommandDownloadFile]:
+        &#34;&#34;&#34;
+        Returns a list of downloadable files
+
+        Returns
+        -------
+        List[EbCommandDownloadFile]
+            List of downloadable files
+        &#34;&#34;&#34;
+        download_files = []
+        for project in self._projects:
+            for distribution in project.distributions:
+                for version in distribution.versions:
+                    for file in version.files:
+                        download_files.append(EbCommandDownloadFile(file, version, distribution, project))
+        return download_files
+
+    def json(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a JSON representation of the object
+
+        Returns
+        -------
+        str
+            JSON representation of the object
+        &#34;&#34;&#34;
+        return json.dumps([project.to_dict() for project in self._projects], indent=3)
+
+    def yaml(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a YAML representation of the object
+
+        Returns
+        -------
+        str
+            YAML representation of the object
+        &#34;&#34;&#34;
+        return dump([project.to_dict() for project in self._projects])
+
+    def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False):
+        &#34;&#34;&#34;
+        Downloads the retrieved files to the specified folder
+
+        Parameters
+        ----------
+        path_output : str
+            Output path
+        filename_only : bool, optional
+            If true, only the file description is used as filename, otherwise the filename is a combination of project, distribution, version and file description. Defaults to False
+        newer_only : bool, optional
+            If true, only files newer than the local copies will be downloaded. Defaults to False
+        &#34;&#34;&#34;
+        for download_file in self.files():
+            if not filename_only:
+                file_name = str(download_file)
+            else:
+                file_name = download_file.description
+
+            path_file = Path(os.path.join(path_output, file_name))
+            content   = None
+            
+            if not path_file.exists() or not newer_only or (datetime.fromtimestamp(path_file.stat().st_mtime) &lt;= download_file.upload_time):
+                content = self._request(download_file.url)
+
+            if content:
+                with open(path_file, &#39;wb&#39;) as f:
+                    f.write(content)
+
+    def filter(self, pattern_projects     : str = PATTERN_ANY_CHAR,
+                     pattern_distributions: str = PATTERN_ANY_CHAR,
+                     pattern_versions     : str = PATTERN_ANY_CHAR,
+                     pattern_files        : str = PATTERN_ANY_CHAR) -&gt; EbCommand:
+        &#34;&#34;&#34;
+        Returns a copy of the current object with a filtered project list
+
+        Parameters
+        ----------
+        pattern_projects : str, optional
+            Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR
+        pattern_distributions : str, optional
+            Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR
+        pattern_versions : str, optional
+            Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR
+        pattern_files : str, optional
+            Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR
+
+        Returns
+        -------
+        EbCommand
+            Copy of the current object with a filtered project list
+        &#34;&#34;&#34;
+        self_copy = copy.deepcopy(self)
+        projects  = []
+
+        for project in self_copy._projects:
+            if re.match(pattern_projects, project.description):
+                project = project.filter([pattern_distributions, pattern_versions, pattern_files])
+
+                if project:
+                    projects.append(project)
+        
+        self_copy._projects = projects
+        return self_copy
+
+    def _filter_duplicates(self, folders: List[EbCommandEntry]) -&gt; List[EbCommandEntry]:
+        &#34;&#34;&#34;
+        Filters EbCommandFolder duplicates. Duplicates could appear if the parsed page contains several links to the same folder
+
+        Parameters
+        ----------
+        folders : List[EbCommandEntry]
+            EbCommandFolder list (e.g. project, distribution, ...)
+
+        Returns
+        -------
+        List[EbCommandEntry]
+            EbCommandFolder list without duplicates
+        &#34;&#34;&#34;
+        for i in reversed(range(0, len(folders))):
+            filtered = list(filter(lambda x: x.id == folders[i].id, folders))
+
+            if len(filtered) &gt; 1:
+                del folders[i]
+        return folders
+
+
+    def _get_projects(self) -&gt; List[EbCommandProject]:
+        &#34;&#34;&#34;
+        Retrieves all projects from EB Command
+
+        Returns
+        -------
+        List[EbCommandProject]
+            List of retrieved projects
+        &#34;&#34;&#34;
+        projects = []
+        html     = self._request(EbCommand._PATH_LOGIN,
+        {
+            EbCommand._KEY_DO      : EbCommand._DO_TYPE_LOGIN,
+            EbCommand._KEY_USER    : self._user              ,
+            EbCommand._KEY_PASSWORD: self._password
+        }, post=True)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_PROJECT_ID: EbCommand._PATTERN_ID }):
+            project = EbCommandProject(sublink, int(sublink.params[EbCommand._KEY_PROJECT_ID]))
+
+            project.add_distributions(self._get_distributions(project))
+            projects.append(project)
+        return self._filter_duplicates(projects)
+
+    def _get_distributions(self, project: EbCommandProject) -&gt; List[EbCommandDistribution]:
+        &#34;&#34;&#34;
+        Retrieves all distributions of the given project from EB Command
+
+        Parameters
+        ----------
+        project : EbCommandProject
+            Project from which to get the distributions
+
+        Returns
+        -------
+        List[EbCommandDistribution]
+            List of project distributions
+        &#34;&#34;&#34;
+        distributions = []
+        html          = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_PROJECT_ID: project.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_DISTRIBUTION, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            distribution = EbCommandDistribution(sublink, int(sublink.params[EbCommand._KEY_ID]))
+
+            distribution.add_versions(self._get_versions(distribution))
+            distributions.append(distribution)
+        return self._filter_duplicates(distributions)
+
+    def _get_versions(self, distribution: EbCommandDistribution) -&gt; List[EbCommandVersion]:
+        &#34;&#34;&#34;
+        Retrieves all versions of the given distribution from EB Command
+
+        Parameters
+        ----------
+        distribution : EbCommandDistribution
+            Distribution from which to get the versions
+
+        Returns
+        -------
+        List[EbCommandVersion]
+            List of distribution versions
+        &#34;&#34;&#34;
+        versions = []
+        html     = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_DISTRIBUTION, EbCommand._KEY_ID: distribution.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_VERSION, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            version = EbCommandVersion(sublink, int(sublink.params[EbCommand._KEY_ID]))
+
+            version.add_files(self._get_files(version))
+            versions.append(version)
+        return self._filter_duplicates(versions)
+
+    def _get_files(self, version: EbCommandVersion) -&gt; List[EbCommandFile]:
+        &#34;&#34;&#34;
+        Retrieves all files of the given version from EB Command
+
+        Parameters
+        ----------
+        version : EbCommandVersion
+            Version from which to get the files
+
+        Returns
+        -------
+        List[EbCommandFile]
+            List of version files
+        &#34;&#34;&#34;
+        files = []
+        html  = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_VERSION, EbCommand._KEY_ID: version.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_ATTACHMENT, { EbCommand._KEY_DO: EbCommand._DO_TYPE_GET, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            file = EbCommandFile(sublink, int(sublink.params[EbCommand._KEY_ID]))
+            files.append(file)
+        return self._filter_duplicates(files)
+
+    def _get_sublinks(self, html_element: Tag, path: str, conditions: dict) -&gt; List[EbCommandSublink]:
+        &#34;&#34;&#34;
+        Gets all sublinks (href links) below a specific element which fulfills the given conditions
+
+        Parameters
+        ----------
+        html_element : Tag
+            BeautifulSoup4 tag below which the sublinks are searched
+        path : str
+            URL subpath (e.g. deploy.pl)
+        conditions : dict
+            Parameters and according patterns the href must contain
+
+        Returns
+        -------
+        List[EbCommandSublink]
+            List of sublinks which fulfil the given conditions
+        &#34;&#34;&#34;
+        sublinks = []
+
+        for tag_link in html_element.find_all(&#39;a&#39;):
+            sublink = self._parse_sublink(tag_link, path, conditions)
+
+            if sublink:
+                sublinks.append(sublink)
+        return sublinks
+
+    def _parse_sublink(self, tag: Tag, path: str, conditions: dict) -&gt; EbCommandSublink | None:
+        &#34;&#34;&#34;
+        Parses a sublink (href) and returns a EbCommandSublink if all conditons are fulfilled
+
+        Parameters
+        ----------
+        tag : Tag
+            BeautifulSoup4 href tag
+        path : str
+            URL subpath (e.g. deploy.pl)
+        conditions : dict
+            Parameters and according patterns the href must contain
+
+        Returns
+        -------
+        EbCommandSublink
+            EbCommandSublink if all conditions were fulfilled, otherwise None
+        &#34;&#34;&#34;
+        sublink = EbCommandSublink(EbCommand._URL_BASE, tag)
+        ok      = True
+
+        # check if conditions are met
+        for key, value in conditions.items():
+            if sublink.path != path or not (key in sublink.params.keys() and re.match(value, sublink.params.get(key))):
+                ok = False
+                break
+
+        if not ok:
+            sublink = None
+        return sublink
+
+
+    def _build_url(self, path: str, params: dict = None) -&gt; str:
+        &#34;&#34;&#34;
+        Builds EB Command URL with the given path (e.g. deploy.pl) and parameters
+
+        Parameters
+        ----------
+        path : str
+            URL subpath (e.g. deploy.pl)
+        params : dict, optional
+            Dictionary with parameter names and values. Defaults to None
+
+        Returns
+        -------
+        str
+            EB Command URL
+        &#34;&#34;&#34;
+        return urljoin(EbCommand._URL_BASE, path + (f&#39;?{urlencode(params)}&#39; if params else &#39;&#39;))
+
+    def _request(self, path: str, data: dict = None, post: bool = False) -&gt; Tag | any | None:
+        &#34;&#34;&#34;
+        Requests data from EB Command
+
+        Parameters
+        ----------
+        path : str
+            URL subpath (e.g. deploy.pl)
+        data : dict, optional
+            Dictionary with parameter names and values. Defaults to None
+        post : bool, optional
+            If true, a POST request is sent, otherwise a GET request. Defaults to False
+
+        Returns
+        -------
+        Tag
+            If the request was successful and the returned data was HTML, a BeautifulSoup4 tag element. If the request was successful and the returned data was not HTML, the requested content. Else, None
+        &#34;&#34;&#34;
+        params_common = { &#39;proxies&#39;: self._proxies, &#39;verify&#39;: False }
+        content       = None
+
+        if not self._session:
+            self._session = requests.Session()
+
+        if post:
+            result = self._session.post(self._build_url(path), data=data, **params_common)
+        else:
+            result = self._session.get(self._build_url(path, data), **params_common)
+
+        if result.status_code == 200:
+            content_type = result.headers.get(&#39;content-type&#39;).lower()
+
+            if &#39;html&#39; in content_type:
+                content = BeautifulSoup(result.content.decode(result.encoding))
+            else:
+                content = result.content
+        return content</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommand"><code class="flex name class">
+<span>class <span class="ident">EbCommand</span></span>
+<span>(</span><span>user: str, password: str, proxy_http: str = None, proxy_https: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommand class represents the interface to interact with the Elekrobit Command Server.</p>
+<p>EbCommand constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>user</code></strong> :&ensp;<code>str</code></dt>
+<dd>EB Command username</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>EB Command user password</dd>
+<dt><strong><code>proxy_http</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>HTTP proxy address (e.g. <a href="http://localhost:1234">http://localhost:1234</a>). Defaults to None</dd>
+<dt><strong><code>proxy_https</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>HTTPS proxy address (e.g. <a href="https://localhost:1234">https://localhost:1234</a>). Defaults to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommand:
+    &#34;&#34;&#34;
+    The EbCommand class represents the interface to interact with the Elekrobit Command Server.
+    &#34;&#34;&#34;
+
+    # URL information
+    _URL_BASE             = &#39;https://command.elektrobit.com/command/mod_perl/&#39;
+    _PATH_LOGIN           = &#39;login.pl&#39;
+    _PATH_DEPLOY          = &#39;deploy.pl&#39;
+    _PATH_ATTACHMENT      = &#39;attachment.pl&#39;
+
+    # HTML param keys
+    _KEY_DO               = &#39;Do&#39;
+    _KEY_USER             = &#39;Al&#39;
+    _KEY_PASSWORD         = &#39;Passwd&#39;
+    _KEY_PROJECT_ID       = &#39;ProjectId&#39;
+    _KEY_ID               = &#39;Id&#39;
+
+    # DO types
+    _DO_TYPE_LOGIN        = &#39;LOGIN&#39;
+    _DO_TYPE_DISTRIBUTION = &#39;DISTR&#39;
+    _DO_TYPE_VERSION      = &#39;VERSION&#39;
+    _DO_TYPE_GET          = &#39;GET&#39;
+
+    # patterns
+    _PATTERN_ID           = r&#39;\d+&#39;
+
+    def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommand constructor
+
+        Parameters
+        ----------
+        user : str
+            EB Command username
+        password : str
+            EB Command user password
+        proxy_http : str, optional
+            HTTP proxy address (e.g. http://localhost:1234). Defaults to None
+        proxy_https : str, optional
+            HTTPS proxy address (e.g. https://localhost:1234). Defaults to None
+        &#34;&#34;&#34;
+        self._session     = None
+        self._user        = user
+        self._password    = password
+        self._proxies     = {}
+
+        if proxy_http:
+            self._proxies[&#39;http&#39;] = proxy_http
+        if proxy_https:
+            self._proxies[&#39;https&#39;] = proxy_https
+
+        self._projects    = self._get_projects()
+
+    def files(self) -&gt; List[EbCommandDownloadFile]:
+        &#34;&#34;&#34;
+        Returns a list of downloadable files
+
+        Returns
+        -------
+        List[EbCommandDownloadFile]
+            List of downloadable files
+        &#34;&#34;&#34;
+        download_files = []
+        for project in self._projects:
+            for distribution in project.distributions:
+                for version in distribution.versions:
+                    for file in version.files:
+                        download_files.append(EbCommandDownloadFile(file, version, distribution, project))
+        return download_files
+
+    def json(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a JSON representation of the object
+
+        Returns
+        -------
+        str
+            JSON representation of the object
+        &#34;&#34;&#34;
+        return json.dumps([project.to_dict() for project in self._projects], indent=3)
+
+    def yaml(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a YAML representation of the object
+
+        Returns
+        -------
+        str
+            YAML representation of the object
+        &#34;&#34;&#34;
+        return dump([project.to_dict() for project in self._projects])
+
+    def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False):
+        &#34;&#34;&#34;
+        Downloads the retrieved files to the specified folder
+
+        Parameters
+        ----------
+        path_output : str
+            Output path
+        filename_only : bool, optional
+            If true, only the file description is used as filename, otherwise the filename is a combination of project, distribution, version and file description. Defaults to False
+        newer_only : bool, optional
+            If true, only files newer than the local copies will be downloaded. Defaults to False
+        &#34;&#34;&#34;
+        for download_file in self.files():
+            if not filename_only:
+                file_name = str(download_file)
+            else:
+                file_name = download_file.description
+
+            path_file = Path(os.path.join(path_output, file_name))
+            content   = None
+            
+            if not path_file.exists() or not newer_only or (datetime.fromtimestamp(path_file.stat().st_mtime) &lt;= download_file.upload_time):
+                content = self._request(download_file.url)
+
+            if content:
+                with open(path_file, &#39;wb&#39;) as f:
+                    f.write(content)
+
+    def filter(self, pattern_projects     : str = PATTERN_ANY_CHAR,
+                     pattern_distributions: str = PATTERN_ANY_CHAR,
+                     pattern_versions     : str = PATTERN_ANY_CHAR,
+                     pattern_files        : str = PATTERN_ANY_CHAR) -&gt; EbCommand:
+        &#34;&#34;&#34;
+        Returns a copy of the current object with a filtered project list
+
+        Parameters
+        ----------
+        pattern_projects : str, optional
+            Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR
+        pattern_distributions : str, optional
+            Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR
+        pattern_versions : str, optional
+            Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR
+        pattern_files : str, optional
+            Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR
+
+        Returns
+        -------
+        EbCommand
+            Copy of the current object with a filtered project list
+        &#34;&#34;&#34;
+        self_copy = copy.deepcopy(self)
+        projects  = []
+
+        for project in self_copy._projects:
+            if re.match(pattern_projects, project.description):
+                project = project.filter([pattern_distributions, pattern_versions, pattern_files])
+
+                if project:
+                    projects.append(project)
+        
+        self_copy._projects = projects
+        return self_copy
+
+    def _filter_duplicates(self, folders: List[EbCommandEntry]) -&gt; List[EbCommandEntry]:
+        &#34;&#34;&#34;
+        Filters EbCommandFolder duplicates. Duplicates could appear if the parsed page contains several links to the same folder
+
+        Parameters
+        ----------
+        folders : List[EbCommandEntry]
+            EbCommandFolder list (e.g. project, distribution, ...)
+
+        Returns
+        -------
+        List[EbCommandEntry]
+            EbCommandFolder list without duplicates
+        &#34;&#34;&#34;
+        for i in reversed(range(0, len(folders))):
+            filtered = list(filter(lambda x: x.id == folders[i].id, folders))
+
+            if len(filtered) &gt; 1:
+                del folders[i]
+        return folders
+
+
+    def _get_projects(self) -&gt; List[EbCommandProject]:
+        &#34;&#34;&#34;
+        Retrieves all projects from EB Command
+
+        Returns
+        -------
+        List[EbCommandProject]
+            List of retrieved projects
+        &#34;&#34;&#34;
+        projects = []
+        html     = self._request(EbCommand._PATH_LOGIN,
+        {
+            EbCommand._KEY_DO      : EbCommand._DO_TYPE_LOGIN,
+            EbCommand._KEY_USER    : self._user              ,
+            EbCommand._KEY_PASSWORD: self._password
+        }, post=True)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_PROJECT_ID: EbCommand._PATTERN_ID }):
+            project = EbCommandProject(sublink, int(sublink.params[EbCommand._KEY_PROJECT_ID]))
+
+            project.add_distributions(self._get_distributions(project))
+            projects.append(project)
+        return self._filter_duplicates(projects)
+
+    def _get_distributions(self, project: EbCommandProject) -&gt; List[EbCommandDistribution]:
+        &#34;&#34;&#34;
+        Retrieves all distributions of the given project from EB Command
+
+        Parameters
+        ----------
+        project : EbCommandProject
+            Project from which to get the distributions
+
+        Returns
+        -------
+        List[EbCommandDistribution]
+            List of project distributions
+        &#34;&#34;&#34;
+        distributions = []
+        html          = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_PROJECT_ID: project.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_DISTRIBUTION, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            distribution = EbCommandDistribution(sublink, int(sublink.params[EbCommand._KEY_ID]))
+
+            distribution.add_versions(self._get_versions(distribution))
+            distributions.append(distribution)
+        return self._filter_duplicates(distributions)
+
+    def _get_versions(self, distribution: EbCommandDistribution) -&gt; List[EbCommandVersion]:
+        &#34;&#34;&#34;
+        Retrieves all versions of the given distribution from EB Command
+
+        Parameters
+        ----------
+        distribution : EbCommandDistribution
+            Distribution from which to get the versions
+
+        Returns
+        -------
+        List[EbCommandVersion]
+            List of distribution versions
+        &#34;&#34;&#34;
+        versions = []
+        html     = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_DISTRIBUTION, EbCommand._KEY_ID: distribution.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_VERSION, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            version = EbCommandVersion(sublink, int(sublink.params[EbCommand._KEY_ID]))
+
+            version.add_files(self._get_files(version))
+            versions.append(version)
+        return self._filter_duplicates(versions)
+
+    def _get_files(self, version: EbCommandVersion) -&gt; List[EbCommandFile]:
+        &#34;&#34;&#34;
+        Retrieves all files of the given version from EB Command
+
+        Parameters
+        ----------
+        version : EbCommandVersion
+            Version from which to get the files
+
+        Returns
+        -------
+        List[EbCommandFile]
+            List of version files
+        &#34;&#34;&#34;
+        files = []
+        html  = self._request(EbCommand._PATH_DEPLOY, { EbCommand._KEY_DO: EbCommand._DO_TYPE_VERSION, EbCommand._KEY_ID: version.id }, post=False)
+
+        for sublink in self._get_sublinks(html, EbCommand._PATH_ATTACHMENT, { EbCommand._KEY_DO: EbCommand._DO_TYPE_GET, EbCommand._KEY_ID: EbCommand._PATTERN_ID }):
+            file = EbCommandFile(sublink, int(sublink.params[EbCommand._KEY_ID]))
+            files.append(file)
+        return self._filter_duplicates(files)
+
+    def _get_sublinks(self, html_element: Tag, path: str, conditions: dict) -&gt; List[EbCommandSublink]:
+        &#34;&#34;&#34;
+        Gets all sublinks (href links) below a specific element which fulfills the given conditions
+
+        Parameters
+        ----------
+        html_element : Tag
+            BeautifulSoup4 tag below which the sublinks are searched
+        path : str
+            URL subpath (e.g. deploy.pl)
+        conditions : dict
+            Parameters and according patterns the href must contain
+
+        Returns
+        -------
+        List[EbCommandSublink]
+            List of sublinks which fulfil the given conditions
+        &#34;&#34;&#34;
+        sublinks = []
+
+        for tag_link in html_element.find_all(&#39;a&#39;):
+            sublink = self._parse_sublink(tag_link, path, conditions)
+
+            if sublink:
+                sublinks.append(sublink)
+        return sublinks
+
+    def _parse_sublink(self, tag: Tag, path: str, conditions: dict) -&gt; EbCommandSublink | None:
+        &#34;&#34;&#34;
+        Parses a sublink (href) and returns a EbCommandSublink if all conditons are fulfilled
+
+        Parameters
+        ----------
+        tag : Tag
+            BeautifulSoup4 href tag
+        path : str
+            URL subpath (e.g. deploy.pl)
+        conditions : dict
+            Parameters and according patterns the href must contain
+
+        Returns
+        -------
+        EbCommandSublink
+            EbCommandSublink if all conditions were fulfilled, otherwise None
+        &#34;&#34;&#34;
+        sublink = EbCommandSublink(EbCommand._URL_BASE, tag)
+        ok      = True
+
+        # check if conditions are met
+        for key, value in conditions.items():
+            if sublink.path != path or not (key in sublink.params.keys() and re.match(value, sublink.params.get(key))):
+                ok = False
+                break
+
+        if not ok:
+            sublink = None
+        return sublink
+
+
+    def _build_url(self, path: str, params: dict = None) -&gt; str:
+        &#34;&#34;&#34;
+        Builds EB Command URL with the given path (e.g. deploy.pl) and parameters
+
+        Parameters
+        ----------
+        path : str
+            URL subpath (e.g. deploy.pl)
+        params : dict, optional
+            Dictionary with parameter names and values. Defaults to None
+
+        Returns
+        -------
+        str
+            EB Command URL
+        &#34;&#34;&#34;
+        return urljoin(EbCommand._URL_BASE, path + (f&#39;?{urlencode(params)}&#39; if params else &#39;&#39;))
+
+    def _request(self, path: str, data: dict = None, post: bool = False) -&gt; Tag | any | None:
+        &#34;&#34;&#34;
+        Requests data from EB Command
+
+        Parameters
+        ----------
+        path : str
+            URL subpath (e.g. deploy.pl)
+        data : dict, optional
+            Dictionary with parameter names and values. Defaults to None
+        post : bool, optional
+            If true, a POST request is sent, otherwise a GET request. Defaults to False
+
+        Returns
+        -------
+        Tag
+            If the request was successful and the returned data was HTML, a BeautifulSoup4 tag element. If the request was successful and the returned data was not HTML, the requested content. Else, None
+        &#34;&#34;&#34;
+        params_common = { &#39;proxies&#39;: self._proxies, &#39;verify&#39;: False }
+        content       = None
+
+        if not self._session:
+            self._session = requests.Session()
+
+        if post:
+            result = self._session.post(self._build_url(path), data=data, **params_common)
+        else:
+            result = self._session.get(self._build_url(path, data), **params_common)
+
+        if result.status_code == 200:
+            content_type = result.headers.get(&#39;content-type&#39;).lower()
+
+            if &#39;html&#39; in content_type:
+                content = BeautifulSoup(result.content.decode(result.encoding))
+            else:
+                content = result.content
+        return content</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommand.download"><code class="name flex">
+<span>def <span class="ident">download</span></span>(<span>self, path_output: str, filename_only: bool = False, newer_only: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Downloads the retrieved files to the specified folder</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>path_output</code></strong> :&ensp;<code>str</code></dt>
+<dd>Output path</dd>
+<dt><strong><code>filename_only</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If true, only the file description is used as filename, otherwise the filename is a combination of project, distribution, version and file description. Defaults to False</dd>
+<dt><strong><code>newer_only</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If true, only files newer than the local copies will be downloaded. Defaults to False</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False):
+    &#34;&#34;&#34;
+    Downloads the retrieved files to the specified folder
+
+    Parameters
+    ----------
+    path_output : str
+        Output path
+    filename_only : bool, optional
+        If true, only the file description is used as filename, otherwise the filename is a combination of project, distribution, version and file description. Defaults to False
+    newer_only : bool, optional
+        If true, only files newer than the local copies will be downloaded. Defaults to False
+    &#34;&#34;&#34;
+    for download_file in self.files():
+        if not filename_only:
+            file_name = str(download_file)
+        else:
+            file_name = download_file.description
+
+        path_file = Path(os.path.join(path_output, file_name))
+        content   = None
+        
+        if not path_file.exists() or not newer_only or (datetime.fromtimestamp(path_file.stat().st_mtime) &lt;= download_file.upload_time):
+            content = self._request(download_file.url)
+
+        if content:
+            with open(path_file, &#39;wb&#39;) as f:
+                f.write(content)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommand.files"><code class="name flex">
+<span>def <span class="ident">files</span></span>(<span>self) ‑> List[<a title="ebcommander.ebcommander.EbCommandDownloadFile" href="#ebcommander.ebcommander.EbCommandDownloadFile">EbCommandDownloadFile</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of downloadable files</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[<a title="ebcommander.ebcommander.EbCommandDownloadFile" href="#ebcommander.ebcommander.EbCommandDownloadFile">EbCommandDownloadFile</a>]</code></dt>
+<dd>List of downloadable files</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def files(self) -&gt; List[EbCommandDownloadFile]:
+    &#34;&#34;&#34;
+    Returns a list of downloadable files
+
+    Returns
+    -------
+    List[EbCommandDownloadFile]
+        List of downloadable files
+    &#34;&#34;&#34;
+    download_files = []
+    for project in self._projects:
+        for distribution in project.distributions:
+            for version in distribution.versions:
+                for file in version.files:
+                    download_files.append(EbCommandDownloadFile(file, version, distribution, project))
+    return download_files</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommand.filter"><code class="name flex">
+<span>def <span class="ident">filter</span></span>(<span>self, pattern_projects: str = '\\.*', pattern_distributions: str = '\\.*', pattern_versions: str = '\\.*', pattern_files: str = '\\.*') ‑> <a title="ebcommander.ebcommander.EbCommand" href="#ebcommander.ebcommander.EbCommand">EbCommand</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a copy of the current object with a filtered project list</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>pattern_projects</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR</dd>
+<dt><strong><code>pattern_distributions</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR</dd>
+<dt><strong><code>pattern_versions</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR</dd>
+<dt><strong><code>pattern_files</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="ebcommander.ebcommander.EbCommand" href="#ebcommander.ebcommander.EbCommand">EbCommand</a></code></dt>
+<dd>Copy of the current object with a filtered project list</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter(self, pattern_projects     : str = PATTERN_ANY_CHAR,
+                 pattern_distributions: str = PATTERN_ANY_CHAR,
+                 pattern_versions     : str = PATTERN_ANY_CHAR,
+                 pattern_files        : str = PATTERN_ANY_CHAR) -&gt; EbCommand:
+    &#34;&#34;&#34;
+    Returns a copy of the current object with a filtered project list
+
+    Parameters
+    ----------
+    pattern_projects : str, optional
+        Regex pattern to filter projects. Defaults to PATTERN_ANY_CHAR
+    pattern_distributions : str, optional
+        Regex pattern to filter distributions. Defaults to PATTERN_ANY_CHAR
+    pattern_versions : str, optional
+        Regex pattern to filter versions. Defaults to PATTERN_ANY_CHAR
+    pattern_files : str, optional
+        Regex pattern to filter files. Defaults to PATTERN_ANY_CHAR
+
+    Returns
+    -------
+    EbCommand
+        Copy of the current object with a filtered project list
+    &#34;&#34;&#34;
+    self_copy = copy.deepcopy(self)
+    projects  = []
+
+    for project in self_copy._projects:
+        if re.match(pattern_projects, project.description):
+            project = project.filter([pattern_distributions, pattern_versions, pattern_files])
+
+            if project:
+                projects.append(project)
+    
+    self_copy._projects = projects
+    return self_copy</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommand.json"><code class="name flex">
+<span>def <span class="ident">json</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a JSON representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>JSON representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def json(self) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a JSON representation of the object
+
+    Returns
+    -------
+    str
+        JSON representation of the object
+    &#34;&#34;&#34;
+    return json.dumps([project.to_dict() for project in self._projects], indent=3)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommand.yaml"><code class="name flex">
+<span>def <span class="ident">yaml</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a YAML representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>YAML representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def yaml(self) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a YAML representation of the object
+
+    Returns
+    -------
+    str
+        YAML representation of the object
+    &#34;&#34;&#34;
+    return dump([project.to_dict() for project in self._projects])</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandDistribution"><code class="flex name class">
+<span>class <span class="ident">EbCommandDistribution</span></span>
+<span>(</span><span>sublink: <a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a>, id: int, versions: List[<a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.</p>
+<p>EbCommandEntry constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
+<dd>EbCommandSublink which represents the actual entry location</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>EB Command reference id</dd>
+<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code>, optional</dt>
+<dd>Specifies of which type the subentries are. Defaults to None</dd>
+<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>List of subentries. Defaults to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandDistribution(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, versions: List[EbCommandVersion] = None) -&gt; None:
+        super().__init__(sublink, id, EbCommandVersion, versions)
+        self.versions = self.subentries
+
+    def add_versions(self, versions: List[EbCommandVersion]):
+        &#34;&#34;&#34;
+        Adds version entries
+
+        Parameters
+        ----------
+        versions : List[EbCommandVersion]
+            A list of versions or a single version entry
+        &#34;&#34;&#34;
+        self.add_subentries(versions, EbCommandVersion)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;versions&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommandDistribution.add_versions"><code class="name flex">
+<span>def <span class="ident">add_versions</span></span>(<span>self, versions: List[<a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds version entries</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>versions</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a>]</code></dt>
+<dd>A list of versions or a single version entry</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_versions(self, versions: List[EbCommandVersion]):
+    &#34;&#34;&#34;
+    Adds version entries
+
+    Parameters
+    ----------
+    versions : List[EbCommandVersion]
+        A list of versions or a single version entry
+    &#34;&#34;&#34;
+    self.add_subentries(versions, EbCommandVersion)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandDistribution.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Creates a dictionary representation of the object
+
+    Returns
+    -------
+    dict
+        Dictionary representation of the object
+    &#34;&#34;&#34;
+    return super().to_dict(sub_description=&#39;versions&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.add_subentries" href="#ebcommander.ebcommander.EbCommandEntry.add_subentries">add_subentries</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.filter" href="#ebcommander.ebcommander.EbCommandEntry.filter">filter</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandDownloadFile"><code class="flex name class">
+<span>class <span class="ident">EbCommandDownloadFile</span></span>
+<span>(</span><span>file: <a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a>, version: <a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a>, distribution: <a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a>, project: <a title="ebcommander.ebcommander.EbCommandProject" href="#ebcommander.ebcommander.EbCommandProject">EbCommandProject</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandDownloadFile is a collection of all necessary information to download
+a file from EBCommand.</p>
+<p>EbCommandDownloadFile constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>file</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a></code></dt>
+<dd>EbCommandFile</dd>
+<dt><strong><code>version</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a></code></dt>
+<dd>EbCommandVersion to which the file belongs</dd>
+<dt><strong><code>distribution</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a></code></dt>
+<dd>EbCommandDistribution to which the version belongs</dd>
+<dt><strong><code>project</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandProject" href="#ebcommander.ebcommander.EbCommandProject">EbCommandProject</a></code></dt>
+<dd>EbCommandProject to which the distribution belongs</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandDownloadFile:
+    &#34;&#34;&#34;
+    The EbCommandDownloadFile is a collection of all necessary information to download
+    a file from EBCommand.
+    &#34;&#34;&#34;
+    def __init__(self, file: EbCommandFile, version: EbCommandVersion, distribution: EbCommandDistribution, project: EbCommandProject) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandDownloadFile constructor
+
+        Parameters
+        ----------
+        file : EbCommandFile
+            EbCommandFile
+        version : EbCommandVersion
+            EbCommandVersion to which the file belongs
+        distribution : EbCommandDistribution
+            EbCommandDistribution to which the version belongs
+        project : EbCommandProject
+            EbCommandProject to which the distribution belongs
+        &#34;&#34;&#34;
+        self.file         = file
+        self.version      = version
+        self.distribution = distribution
+        self.project      = project
+        self.description  = self.file.description
+        self.url          = self.file.sublink.url
+        self.upload_time  = self.file.upload_time
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a string representation of the object
+
+        Returns
+        -------
+        str
+            String representation of the object
+        &#34;&#34;&#34;
+        s = &#39;&#39;
+        for i, description in enumerate([
+            self.project.description     ,
+            self.distribution.description,
+            self.version.description     ,
+            self.description
+        ]):
+            s = s + (&#39;-&#39; if i &gt; 0 else &#39;&#39;) + description.replace(&#39;\\&#39;, &#39;-&#39;).replace(&#39;/&#39;, &#39;-&#39;)
+        return s</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandEntry"><code class="flex name class">
+<span>class <span class="ident">EbCommandEntry</span></span>
+<span>(</span><span>sublink: <a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a>, id: int, subentry_type: type = None, subentries: list = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandEntry class represents the base class for an entry in the EbCommand
+hierarchy (e.g. project, distribution, version, file)</p>
+<p>EbCommandEntry constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
+<dd>EbCommandSublink which represents the actual entry location</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>EB Command reference id</dd>
+<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code>, optional</dt>
+<dd>Specifies of which type the subentries are. Defaults to None</dd>
+<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>List of subentries. Defaults to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandEntry:
+    &#34;&#34;&#34;
+    The EbCommandEntry class represents the base class for an entry in the EbCommand
+    hierarchy (e.g. project, distribution, version, file)
+    &#34;&#34;&#34;
+    def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandEntry constructor
+
+        Parameters
+        ----------
+        sublink : EbCommandSublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        subentry_type : type, optional
+            Specifies of which type the subentries are. Defaults to None
+        subentries : list, optional
+            List of subentries. Defaults to None
+        &#34;&#34;&#34;
+        self.sublink     = sublink
+        self.description = sublink.description
+        self.id          = id
+        self.subentries  = []
+
+        self.add_subentries(subentries, subentry_type)
+
+    def add_subentries(self, subentries: list, subentry_type: type):
+        &#34;&#34;&#34;
+        Adds a new subentry
+
+        Parameters
+        ----------
+        subentries : list
+            A list of subentries or a single entry of the given subentry-type
+        subentry_type : type
+            Subentry type
+        &#34;&#34;&#34;
+        if subentries is not None and subentry_type is not None:
+            if isinstance(subentries, subentry_type):
+                self.subentries.append(subentries)
+            elif isinstance(subentries, list) or isinstance(subentries, tuple):
+                for subfolder in subentries:
+                    self.add_subentries(subfolder, subentry_type)
+
+    def to_dict(self, sub_description: str = &#39;sub&#39;) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Parameters
+        ----------
+        sub_description : str, optional
+            Key description of the subentry list. Defaults to &#39;sub&#39;
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        KEY_DESCRIPTION = &#39;description&#39;
+        KEY_ID          = &#39;id&#39;
+        KEY_URL         = &#39;url&#39;
+        KEY_SUBFOLDER   = sub_description
+        dictionary      = \
+        {
+            KEY_DESCRIPTION: self.description,
+            KEY_ID         : self.id,
+            KEY_URL        : self.sublink.url,
+        }
+
+        if len(self.subentries) &gt; 0:
+            dictionary[KEY_SUBFOLDER] = [subfolder.to_dict() for subfolder in self.subentries]
+        return dictionary
+
+    def filter(self, subs_patterns: List[str]) -&gt; EbCommandEntry:
+        &#34;&#34;&#34;
+        Filters all subentries based on their descriptions
+
+        Parameters
+        ----------
+        subs_patterns : List[str]
+            List of patterns where each pattern is applicable for a subentry layer
+
+        Returns
+        -------
+        EbCommandEntry
+            If all patterns found at least one element a copy of the filtered object is returned, otherwise None
+        &#34;&#34;&#34;
+        self_copy  = copy.copy(self)
+        subentries = []
+        
+        if len(subs_patterns) &gt; 0:
+            for subentry in self_copy.subentries:
+                if len(subs_patterns) &gt; 1:
+                    subentry = subentry.filter(subs_patterns[1:])
+                
+                if subentry:
+                    if re.match(subs_patterns[0], subentry.description):
+                        subentries.append(subentry)
+                    else:
+                        subentry = None
+
+            # refill sufolders (done this way instead of using self_copy.subfolders = subfolders,
+            # to keep referenced lists (distributions, version, files, ...) up-to-date)
+            self_copy.subentries.clear()
+            self_copy.subentries.extend(subentries)
+
+        return self_copy if len(self_copy.subentries) &gt; 0 else None</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a></li>
+<li><a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a></li>
+<li><a title="ebcommander.ebcommander.EbCommandProject" href="#ebcommander.ebcommander.EbCommandProject">EbCommandProject</a></li>
+<li><a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommandEntry.add_subentries"><code class="name flex">
+<span>def <span class="ident">add_subentries</span></span>(<span>self, subentries: list, subentry_type: type)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds a new subentry</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list of subentries or a single entry of the given subentry-type</dd>
+<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code></dt>
+<dd>Subentry type</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_subentries(self, subentries: list, subentry_type: type):
+    &#34;&#34;&#34;
+    Adds a new subentry
+
+    Parameters
+    ----------
+    subentries : list
+        A list of subentries or a single entry of the given subentry-type
+    subentry_type : type
+        Subentry type
+    &#34;&#34;&#34;
+    if subentries is not None and subentry_type is not None:
+        if isinstance(subentries, subentry_type):
+            self.subentries.append(subentries)
+        elif isinstance(subentries, list) or isinstance(subentries, tuple):
+            for subfolder in subentries:
+                self.add_subentries(subfolder, subentry_type)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandEntry.filter"><code class="name flex">
+<span>def <span class="ident">filter</span></span>(<span>self, subs_patterns: List[str]) ‑> <a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Filters all subentries based on their descriptions</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>subs_patterns</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>List of patterns where each pattern is applicable for a subentry layer</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></code></dt>
+<dd>If all patterns found at least one element a copy of the filtered object is returned, otherwise None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter(self, subs_patterns: List[str]) -&gt; EbCommandEntry:
+    &#34;&#34;&#34;
+    Filters all subentries based on their descriptions
+
+    Parameters
+    ----------
+    subs_patterns : List[str]
+        List of patterns where each pattern is applicable for a subentry layer
+
+    Returns
+    -------
+    EbCommandEntry
+        If all patterns found at least one element a copy of the filtered object is returned, otherwise None
+    &#34;&#34;&#34;
+    self_copy  = copy.copy(self)
+    subentries = []
+    
+    if len(subs_patterns) &gt; 0:
+        for subentry in self_copy.subentries:
+            if len(subs_patterns) &gt; 1:
+                subentry = subentry.filter(subs_patterns[1:])
+            
+            if subentry:
+                if re.match(subs_patterns[0], subentry.description):
+                    subentries.append(subentry)
+                else:
+                    subentry = None
+
+        # refill sufolders (done this way instead of using self_copy.subfolders = subfolders,
+        # to keep referenced lists (distributions, version, files, ...) up-to-date)
+        self_copy.subentries.clear()
+        self_copy.subentries.extend(subentries)
+
+    return self_copy if len(self_copy.subentries) &gt; 0 else None</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandEntry.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, sub_description: str = 'sub') ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary representation of the object</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sub_description</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Key description of the subentry list. Defaults to 'sub'</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self, sub_description: str = &#39;sub&#39;) -&gt; dict:
+    &#34;&#34;&#34;
+    Creates a dictionary representation of the object
+
+    Parameters
+    ----------
+    sub_description : str, optional
+        Key description of the subentry list. Defaults to &#39;sub&#39;
+
+    Returns
+    -------
+    dict
+        Dictionary representation of the object
+    &#34;&#34;&#34;
+    KEY_DESCRIPTION = &#39;description&#39;
+    KEY_ID          = &#39;id&#39;
+    KEY_URL         = &#39;url&#39;
+    KEY_SUBFOLDER   = sub_description
+    dictionary      = \
+    {
+        KEY_DESCRIPTION: self.description,
+        KEY_ID         : self.id,
+        KEY_URL        : self.sublink.url,
+    }
+
+    if len(self.subentries) &gt; 0:
+        dictionary[KEY_SUBFOLDER] = [subfolder.to_dict() for subfolder in self.subentries]
+    return dictionary</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandFile"><code class="flex name class">
+<span>class <span class="ident">EbCommandFile</span></span>
+<span>(</span><span>sublink: <a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a>, id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandFile class represents a file in the EbCommand hierarchy</p>
+<p>EbCommandFile constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
+<dd>EbCommandSublink which represents the actual entry location</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>EB Command reference id</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandFile(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandFile class represents a file in the EbCommand hierarchy
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandFile constructor
+
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        &#34;&#34;&#34;
+        super().__init__(sublink, id)
+        
+        self.upload_time = sublink.upload_time
+        self.size        = sublink.size
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        KEY_UPLOAD_TIME = &#39;upload-time&#39;
+        KEY_SIZE        = &#39;size&#39;
+
+        dictionary = super().to_dict()
+
+        dictionary[KEY_UPLOAD_TIME] = self.upload_time.strftime(f&#39;%Y-%m-%d %H:%M:%S&#39;)
+
+        for entry in (
+            (SizeUnit.BYTE      ,  &#39;B&#39;),
+            (SizeUnit.KILO_BYTE , &#39;KB&#39;),
+            (SizeUnit.MEGA_BYTE , &#39;MB&#39;),
+            (SizeUnit.GIGA_BYTE , &#39;GB&#39;),
+            (SizeUnit.TERRA_BYTE, &#39;TB&#39;),
+        ):
+            if self.size.unit == entry[0]:
+                dictionary[KEY_SIZE] = f&#39;{self.size.value} {entry[1]}&#39;
+                break
+        return dictionary</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommandFile.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Creates a dictionary representation of the object
+
+    Returns
+    -------
+    dict
+        Dictionary representation of the object
+    &#34;&#34;&#34;
+    KEY_UPLOAD_TIME = &#39;upload-time&#39;
+    KEY_SIZE        = &#39;size&#39;
+
+    dictionary = super().to_dict()
+
+    dictionary[KEY_UPLOAD_TIME] = self.upload_time.strftime(f&#39;%Y-%m-%d %H:%M:%S&#39;)
+
+    for entry in (
+        (SizeUnit.BYTE      ,  &#39;B&#39;),
+        (SizeUnit.KILO_BYTE , &#39;KB&#39;),
+        (SizeUnit.MEGA_BYTE , &#39;MB&#39;),
+        (SizeUnit.GIGA_BYTE , &#39;GB&#39;),
+        (SizeUnit.TERRA_BYTE, &#39;TB&#39;),
+    ):
+        if self.size.unit == entry[0]:
+            dictionary[KEY_SIZE] = f&#39;{self.size.value} {entry[1]}&#39;
+            break
+    return dictionary</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.add_subentries" href="#ebcommander.ebcommander.EbCommandEntry.add_subentries">add_subentries</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.filter" href="#ebcommander.ebcommander.EbCommandEntry.filter">filter</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandProject"><code class="flex name class">
+<span>class <span class="ident">EbCommandProject</span></span>
+<span>(</span><span>sublink: <a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a>, id: int, distributions: List[<a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandProject class represents a project in the EbCommand hierarchy.</p>
+<p>EbCommandEntry constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
+<dd>EbCommandSublink which represents the actual entry location</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>EB Command reference id</dd>
+<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code>, optional</dt>
+<dd>Specifies of which type the subentries are. Defaults to None</dd>
+<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>List of subentries. Defaults to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandProject(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandProject class represents a project in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, distributions: List[EbCommandDistribution] = None) -&gt; None:
+        super().__init__(sublink, id, EbCommandDistribution, distributions)
+        self.distributions = self.subentries
+
+    def add_distributions(self, distributions: List[EbCommandDistribution]):
+        &#34;&#34;&#34;
+        Adds distribution entries
+
+        Parameters
+        ----------
+        distributions : List[EbCommandDistribution]
+            A list of distributions or a single distribution
+        &#34;&#34;&#34;
+        self.add_subentries(distributions, EbCommandDistribution)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;distributions&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommandProject.add_distributions"><code class="name flex">
+<span>def <span class="ident">add_distributions</span></span>(<span>self, distributions: List[<a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds distribution entries</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>distributions</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a>]</code></dt>
+<dd>A list of distributions or a single distribution</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_distributions(self, distributions: List[EbCommandDistribution]):
+    &#34;&#34;&#34;
+    Adds distribution entries
+
+    Parameters
+    ----------
+    distributions : List[EbCommandDistribution]
+        A list of distributions or a single distribution
+    &#34;&#34;&#34;
+    self.add_subentries(distributions, EbCommandDistribution)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandProject.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Creates a dictionary representation of the object
+
+    Returns
+    -------
+    dict
+        Dictionary representation of the object
+    &#34;&#34;&#34;
+    return super().to_dict(sub_description=&#39;distributions&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.add_subentries" href="#ebcommander.ebcommander.EbCommandEntry.add_subentries">add_subentries</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.filter" href="#ebcommander.ebcommander.EbCommandEntry.filter">filter</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandSublink"><code class="flex name class">
+<span>class <span class="ident">EbCommandSublink</span></span>
+<span>(</span><span>url_base: str, tag: Tag)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandSublink class inherits from Sublink. It contains (if found) tag siblings
+information (e.g. upload time, size) which belong to the downloadable EB file</p>
+<p>EbCommandSublink constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>url_base</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL base (e.g. <a href="http://localhost">http://localhost</a>)</dd>
+<dt><strong><code>tag</code></strong> :&ensp;<code>Tag</code></dt>
+<dd>BeautifulSoup4 href tag</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandSublink(Sublink):
+    &#34;&#34;&#34;
+    The EbCommandSublink class inherits from Sublink. It contains (if found) tag siblings
+    information (e.g. upload time, size) which belong to the downloadable EB file
+    &#34;&#34;&#34;
+    def __init__(self, url_base: str, tag: Tag) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandSublink constructor
+
+        Parameters
+        ----------
+        url_base : str
+            URL base (e.g. http://localhost)
+        tag : Tag
+            BeautifulSoup4 href tag
+        &#34;&#34;&#34;
+        super().__init__(url_base, tag)
+
+        table_row = tag.find_parent(&#39;tr&#39;)
+        if table_row:
+            for table_data in table_row.find_all(&#39;td&#39;):
+                if hasattr(table_data, &#39;text&#39;):
+                    text        = table_data.text.strip()
+                    upload_time = re.match(r&#39;(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})&#39;, text)
+                    size        = Size.parse(text)
+
+                    if upload_time:
+                        self.upload_time = datetime(int(upload_time.group(1)),
+                                                    int(upload_time.group(2)),
+                                                    int(upload_time.group(3)),
+                                                    int(upload_time.group(4)),
+                                                    int(upload_time.group(5)),
+                                                    int(upload_time.group(6)))
+                    elif size:
+                        self.size = size
+
+        &#34;&#34;&#34;
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3
+        &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ebcommander.ebcommander.Sublink.params" href="#ebcommander.ebcommander.Sublink.params">params</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandVersion"><code class="flex name class">
+<span>class <span class="ident">EbCommandVersion</span></span>
+<span>(</span><span>sublink: <a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a>, id: int, files: List[<a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The EbCommandVersion class represents a distribution version in the EbCommand hierarchy.</p>
+<p>EbCommandVersion constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
+<dd>EbCommandSublink which represents the actual entry location</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>EB Command reference id</dd>
+<dt><strong><code>files</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a>]</code>, optional</dt>
+<dd>List of version files. Defaults to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EbCommandVersion(EbCommandEntry):
+    &#34;&#34;&#34;
+    The EbCommandVersion class represents a distribution version in the EbCommand hierarchy.
+    &#34;&#34;&#34;
+    def __init__(self, sublink: Sublink, id: int, files: List[EbCommandFile] = None) -&gt; None:
+        &#34;&#34;&#34;
+        EbCommandVersion constructor
+
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        files : List[EbCommandFile], optional
+            List of version files. Defaults to None
+        &#34;&#34;&#34;
+        super().__init__(sublink, id, EbCommandFile, files)
+        self.files = self.subentries
+
+    def add_files(self, files: List[EbCommandFile]):
+        &#34;&#34;&#34;
+        Adds file entries
+
+        Parameters
+        ----------
+        files : List[EbCommandFile]
+            A list of files or a single file entry
+        &#34;&#34;&#34;
+        self.add_subentries(files, EbCommandFile)
+
+    def to_dict(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Creates a dictionary representation of the object
+
+        Returns
+        -------
+        dict
+            Dictionary representation of the object
+        &#34;&#34;&#34;
+        return super().to_dict(sub_description=&#39;files&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.EbCommandVersion.add_files"><code class="name flex">
+<span>def <span class="ident">add_files</span></span>(<span>self, files: List[<a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds file entries</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>files</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a>]</code></dt>
+<dd>A list of files or a single file entry</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_files(self, files: List[EbCommandFile]):
+    &#34;&#34;&#34;
+    Adds file entries
+
+    Parameters
+    ----------
+    files : List[EbCommandFile]
+        A list of files or a single file entry
+    &#34;&#34;&#34;
+    self.add_subentries(files, EbCommandFile)</code></pre>
+</details>
+</dd>
+<dt id="ebcommander.ebcommander.EbCommandVersion.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary representation of the object</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary representation of the object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Creates a dictionary representation of the object
+
+    Returns
+    -------
+    dict
+        Dictionary representation of the object
+    &#34;&#34;&#34;
+    return super().to_dict(sub_description=&#39;files&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.add_subentries" href="#ebcommander.ebcommander.EbCommandEntry.add_subentries">add_subentries</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.filter" href="#ebcommander.ebcommander.EbCommandEntry.filter">filter</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ebcommander.ebcommander.Size"><code class="flex name class">
+<span>class <span class="ident">Size</span></span>
+<span>(</span><span>value: float, unit: <a title="ebcommander.ebcommander.SizeUnit" href="#ebcommander.ebcommander.SizeUnit">SizeUnit</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The Size class represents a file size by its value and by its unit</p>
+<p>Size constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Size value</dd>
+<dt><strong><code>unit</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.SizeUnit" href="#ebcommander.ebcommander.SizeUnit">SizeUnit</a></code></dt>
+<dd>Size unit</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Size:
+    &#34;&#34;&#34;
+    The Size class represents a file size by its value and by its unit
+    &#34;&#34;&#34;
+    def __init__(self, value: float, unit: SizeUnit) -&gt; None:
+        &#34;&#34;&#34;
+        Size constructor
+
+        Parameters
+        ----------
+        value : float
+            Size value
+        unit : SizeUnit
+            Size unit
+        &#34;&#34;&#34;
+        self.value = value
+        self.unit  = unit
+
+    @staticmethod
+    def parse(s: str) -&gt; Size | None:
+        &#34;&#34;&#34;
+        Creates Size object from a size string
+
+        Parameters
+        ----------
+        s : str
+            String to parse (e.g. 2.4 MB, 643B, 6.2kB, ...)
+
+        Returns
+        -------
+        Size
+            Size object if successful, otherwise None
+        &#34;&#34;&#34;
+        s    = re.sub(&#39;\s+&#39;, &#39;&#39;, s.strip())
+        size = re.match(r&#39;^((\d+)(\.\d+)?)(\w+)$&#39;, s)
+
+        if size:
+            value      = float(size.group(1))
+            unit       = None
+            first_char = size.group(4)[0].upper()
+
+            for entry in (
+                (&#39;B&#39;, SizeUnit.BYTE      ),
+                (&#39;K&#39;, SizeUnit.KILO_BYTE ),
+                (&#39;M&#39;, SizeUnit.MEGA_BYTE ),
+                (&#39;G&#39;, SizeUnit.GIGA_BYTE ),
+                (&#39;T&#39;, SizeUnit.TERRA_BYTE),
+            ):
+                if first_char == entry[0]:
+                    unit = entry[1]
+                    break
+
+            if unit:
+                size = Size(value, unit)
+            else:
+                size = None
+        return size</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="ebcommander.ebcommander.Size.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>s: str) ‑> <a title="ebcommander.ebcommander.Size" href="#ebcommander.ebcommander.Size">Size</a> | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates Size object from a size string</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code></dt>
+<dd>String to parse (e.g. 2.4 MB, 643B, 6.2kB, &hellip;)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="ebcommander.ebcommander.Size" href="#ebcommander.ebcommander.Size">Size</a></code></dt>
+<dd>Size object if successful, otherwise None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def parse(s: str) -&gt; Size | None:
+    &#34;&#34;&#34;
+    Creates Size object from a size string
+
+    Parameters
+    ----------
+    s : str
+        String to parse (e.g. 2.4 MB, 643B, 6.2kB, ...)
+
+    Returns
+    -------
+    Size
+        Size object if successful, otherwise None
+    &#34;&#34;&#34;
+    s    = re.sub(&#39;\s+&#39;, &#39;&#39;, s.strip())
+    size = re.match(r&#39;^((\d+)(\.\d+)?)(\w+)$&#39;, s)
+
+    if size:
+        value      = float(size.group(1))
+        unit       = None
+        first_char = size.group(4)[0].upper()
+
+        for entry in (
+            (&#39;B&#39;, SizeUnit.BYTE      ),
+            (&#39;K&#39;, SizeUnit.KILO_BYTE ),
+            (&#39;M&#39;, SizeUnit.MEGA_BYTE ),
+            (&#39;G&#39;, SizeUnit.GIGA_BYTE ),
+            (&#39;T&#39;, SizeUnit.TERRA_BYTE),
+        ):
+            if first_char == entry[0]:
+                unit = entry[1]
+                break
+
+        if unit:
+            size = Size(value, unit)
+        else:
+            size = None
+    return size</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit"><code class="flex name class">
+<span>class <span class="ident">SizeUnit</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The SizeUnit enum represents file size units</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SizeUnit(Enum):
+    &#34;&#34;&#34;
+    The SizeUnit enum represents file size units
+    &#34;&#34;&#34;
+    UNKNOWN    = 0
+    BYTE       = 1
+    KILO_BYTE  = 2
+    MEGA_BYTE  = 3
+    GIGA_BYTE  = 4
+    TERRA_BYTE = 5</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="ebcommander.ebcommander.SizeUnit.BYTE"><code class="name">var <span class="ident">BYTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit.GIGA_BYTE"><code class="name">var <span class="ident">GIGA_BYTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit.KILO_BYTE"><code class="name">var <span class="ident">KILO_BYTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit.MEGA_BYTE"><code class="name">var <span class="ident">MEGA_BYTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit.TERRA_BYTE"><code class="name">var <span class="ident">TERRA_BYTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="ebcommander.ebcommander.SizeUnit.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="ebcommander.ebcommander.Sublink"><code class="flex name class">
+<span>class <span class="ident">Sublink</span></span>
+<span>(</span><span>url_base: str, tag: Tag)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The Sublink class represents an HTML href-tag but also stores its text, its full
+URL - based on the URL base path - and its parameters</p>
+<p>Sublink constructor</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>url_base</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL base (e.g. <a href="http://localhost">http://localhost</a>)</dd>
+<dt><strong><code>tag</code></strong> :&ensp;<code>Tag</code></dt>
+<dd>BeautifulSoup4 href tag</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Sublink:
+    &#34;&#34;&#34;
+    The Sublink class represents an HTML href-tag but also stores its text, its full
+    URL - based on the URL base path - and its parameters
+    &#34;&#34;&#34;
+    def __init__(self, url_base: str, tag: Tag) -&gt; None:
+        &#34;&#34;&#34;
+        Sublink constructor
+
+        Parameters
+        ----------
+        url_base : str
+            URL base (e.g. http://localhost)
+        tag : Tag
+            BeautifulSoup4 href tag
+        &#34;&#34;&#34;
+        self.url_base    = url_base
+        self.description = re.sub(r&#39;\s+&#39;, &#39; &#39;, unicodedata.normalize(&#39;NFKC&#39;, tag.text.strip()))
+        self.href        = tag.attrs.get(&#39;href&#39;)
+        self.url         = urljoin(self.url_base, self.href)
+
+        url_parsed = urlparse(self.href)
+
+        self.path   = url_parsed.path
+        self.params = { key: value[0] for key, value in parse_qs(url_parsed.query).items() }
+
+        &#34;&#34;&#34;
+        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3
+        &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="ebcommander.ebcommander.Sublink.params"><code class="name">var <span class="ident">params</span></code></dt>
+<dd>
+<div class="desc"><p>IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+<a href="https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3">https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&amp;utm_medium=web2x&amp;context=3</a></p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ebcommander" href="index.html">ebcommander</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommand" href="#ebcommander.ebcommander.EbCommand">EbCommand</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommand.download" href="#ebcommander.ebcommander.EbCommand.download">download</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommand.files" href="#ebcommander.ebcommander.EbCommand.files">files</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommand.filter" href="#ebcommander.ebcommander.EbCommand.filter">filter</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommand.json" href="#ebcommander.ebcommander.EbCommand.json">json</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommand.yaml" href="#ebcommander.ebcommander.EbCommand.yaml">yaml</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommandDistribution.add_versions" href="#ebcommander.ebcommander.EbCommandDistribution.add_versions">add_versions</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandDistribution.to_dict" href="#ebcommander.ebcommander.EbCommandDistribution.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandDownloadFile" href="#ebcommander.ebcommander.EbCommandDownloadFile">EbCommandDownloadFile</a></code></h4>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandEntry" href="#ebcommander.ebcommander.EbCommandEntry">EbCommandEntry</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.add_subentries" href="#ebcommander.ebcommander.EbCommandEntry.add_subentries">add_subentries</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.filter" href="#ebcommander.ebcommander.EbCommandEntry.filter">filter</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandEntry.to_dict" href="#ebcommander.ebcommander.EbCommandEntry.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommandFile.to_dict" href="#ebcommander.ebcommander.EbCommandFile.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandProject" href="#ebcommander.ebcommander.EbCommandProject">EbCommandProject</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommandProject.add_distributions" href="#ebcommander.ebcommander.EbCommandProject.add_distributions">add_distributions</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandProject.to_dict" href="#ebcommander.ebcommander.EbCommandProject.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></h4>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.EbCommandVersion.add_files" href="#ebcommander.ebcommander.EbCommandVersion.add_files">add_files</a></code></li>
+<li><code><a title="ebcommander.ebcommander.EbCommandVersion.to_dict" href="#ebcommander.ebcommander.EbCommandVersion.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.Size" href="#ebcommander.ebcommander.Size">Size</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.Size.parse" href="#ebcommander.ebcommander.Size.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.SizeUnit" href="#ebcommander.ebcommander.SizeUnit">SizeUnit</a></code></h4>
+<ul class="two-column">
+<li><code><a title="ebcommander.ebcommander.SizeUnit.BYTE" href="#ebcommander.ebcommander.SizeUnit.BYTE">BYTE</a></code></li>
+<li><code><a title="ebcommander.ebcommander.SizeUnit.GIGA_BYTE" href="#ebcommander.ebcommander.SizeUnit.GIGA_BYTE">GIGA_BYTE</a></code></li>
+<li><code><a title="ebcommander.ebcommander.SizeUnit.KILO_BYTE" href="#ebcommander.ebcommander.SizeUnit.KILO_BYTE">KILO_BYTE</a></code></li>
+<li><code><a title="ebcommander.ebcommander.SizeUnit.MEGA_BYTE" href="#ebcommander.ebcommander.SizeUnit.MEGA_BYTE">MEGA_BYTE</a></code></li>
+<li><code><a title="ebcommander.ebcommander.SizeUnit.TERRA_BYTE" href="#ebcommander.ebcommander.SizeUnit.TERRA_BYTE">TERRA_BYTE</a></code></li>
+<li><code><a title="ebcommander.ebcommander.SizeUnit.UNKNOWN" href="#ebcommander.ebcommander.SizeUnit.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></h4>
+<ul class="">
+<li><code><a title="ebcommander.ebcommander.Sublink.params" href="#ebcommander.ebcommander.Sublink.params">params</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
