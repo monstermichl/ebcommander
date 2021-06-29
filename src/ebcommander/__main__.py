@@ -29,10 +29,10 @@ def main():
         with open(path, 'w') as f:
             f.write(content)
 
-    def download(path: str, command_object: EbCommand, filename_only: bool = False):
+    def download(path: str, command_object: EbCommand, filename_only: bool = False, newer_only: bool = False):
         path = Path(path).absolute()
         if path.exists():
-            command_object.download(str(path), filename_only)
+            command_object.download(str(path), filename_only, newer_only)
 
     # config has higher priority
     if args.config:
@@ -46,6 +46,7 @@ def main():
         KEY_YAML_PATH                 = 'path'
         KEY_YAML_FILENAME_ONLY        = 'filename-only'
         KEY_YAML_MKDIR                = 'mkdir'
+        KEY_YAML_NEWER_ONLY           = 'newer-only'
 
         with open(args.config, 'r') as f:
             config = load(f.read(), Loader=CLoader)
@@ -81,8 +82,14 @@ def main():
                     if KEY_YAML_MKDIR in entry_download and not os.path.isdir(entry_download[KEY_YAML_PATH]):
                         os.mkdir(entry_download[KEY_YAML_PATH])
 
+                    # download newer files only
+                    if KEY_YAML_NEWER_ONLY in entry_download:
+                        newer_only = entry_download[KEY_YAML_NEWER_ONLY]
+                    else:
+                        newer_only = False
+
                     # download file
-                    download(entry_download[KEY_YAML_PATH], filtered, filename_only)
+                    download(entry_download[KEY_YAML_PATH], filtered, filename_only, newer_only)
 
             # store as JSON
             if KEY_YAML_JSON in entry:
