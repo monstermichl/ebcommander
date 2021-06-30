@@ -1,21 +1,36 @@
-# This entry filters for all J1939 projects and their corresponding files which contain
+# This entry filters for all ACG-8 projects and their corresponding files which contain
 # the word "issue" and ".pdf". It stores the retrieved data as IssueReports.json and
-# IssueReports.yaml files in the current working directory and downloads the files into
-# the J1939 directory. "filename-only" specifies that the downloaded files' filenames
+# IssueReports.yaml files in the ACG-8 directory and also downloads the files into the
+# ACG-8 directory. "filename-only" specifies that the downloaded files' filenames
 # are not combinations of project-distribution-version-filename but just the filename.
-# "mkdir" makes sure that the output directory is created.
+# "mkdir" makes sure that the output directory is created. newer-only states that only
+# files, newer than the local copies are downloaded.
 #
 # HINT: Omitting the options "filter-distributions" and "filter-versions" would lead to
-# the same filter result. Filters are Regex compliant. Multiple configurations can be
-# added to the file.
+# the same filter result. Filters are Regex compliant.
 #
-- filter-projects     : ".*J1939.*"         # Regex pattern to filter projects (optional)
-  filter-distributions: ".*"                # Regex pattern to filter project distributions (optional)
-  filter-versions     : ".*"                # Regex pattern to filter distribution versions (optional)
-  filter-files        : ".*issue.*\\.pdf"   # Regex pattern to filter version files (optional)
-  json                : "IssueReports.json" # Output path for JSON file (optional)
-  yaml                : "IssueReports.yaml" # Output path for YAML file (optional)
-  download            :                     # Download options
-    path              : "J1939"             # Download folder
-    filename-only     : true                # If true, downloaded files' filenames will only consist of the filename
-    mkdir             : true                # Creates the output directory
+# HINT: Multiple configurations can be added to a config file.
+
+- filter-projects     : ".*ACG-8.*"               # Regex pattern to filter projects (optional)
+  filter-distributions: ".*"                      # Regex pattern to filter project distributions (optional)
+  filter-versions     : ".*"                      # Regex pattern to filter distribution versions (optional)
+  filter-files        : ".*issue.*\\.pdf"         # Regex pattern to filter version files (optional)
+  json                : "ACG-8/IssueReports.json" # Output path for JSON file (optional)
+  yaml                : "ACG-8/IssueReports.yaml" # Output path for YAML file (optional)
+  download            :                           # Download options (optional)
+    path              : "ACG-8"                   # Download folder
+    filename-only     : true                      # If true, downloaded files' filenames will only consist of the filename (optional)
+    mkdir             : true                      # Creates the output directory (optional)
+    newer-only        : true                      # If true, only files, newer than the local copies are downloaded (optional)
+
+# Another example configuration. Both configurations are considered. The output of
+# configuration one will be stored in the local ACG-8 folder, the output of this
+# configuration will be stored in the local ACG-7 folder.
+
+- filter-projects     : ".*ACG-7.*"
+  filter-files        : ".*issue.*\\.pdf"
+  yaml                : "ACG-7/IssueReports.yaml"
+  download            :
+    path              : "ACG-7"
+    filename-only     : true
+    mkdir             : true

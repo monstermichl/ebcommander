@@ -34,7 +34,7 @@ For simple requests (e.g. just to get a glimpse at a specific file) the script c
 ---
 
 ### Complex calls
-For more versatile operations a config file must provided. It can contain several settings to apply filters on projects, distributions, versions and files, store JSON and YAML files and download the retrieved files. For more information see example-config.yaml
+For more versatile operations a config file must be provided. It can contain several settings to apply filters on projects, distributions, versions and files, store JSON and YAML files and download the retrieved files. For more information see example-config.yaml
 
 The config is provided by the following arguments
 
