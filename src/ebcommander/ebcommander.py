@@ -37,8 +37,6 @@ class Size:
     """
     def __init__(self, value: float, unit: SizeUnit) -> None:
         """
-        Size constructor
-
         Parameters
         ----------
         value : float
@@ -97,8 +95,6 @@ class Sublink:
     """
     def __init__(self, url_base: str, tag: Tag) -> None:
         """
-        Sublink constructor
-
         Parameters
         ----------
         url_base : str
@@ -129,8 +125,6 @@ class EbCommandSublink(Sublink):
     """
     def __init__(self, url_base: str, tag: Tag) -> None:
         """
-        EbCommandSublink constructor
-
         Parameters
         ----------
         url_base : str
@@ -171,8 +165,6 @@ class EbCommandEntry:
     """
     def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -> None:
         """
-        EbCommandEntry constructor
-
         Parameters
         ----------
         sublink : EbCommandSublink
@@ -280,8 +272,6 @@ class EbCommandFile(EbCommandEntry):
     """
     def __init__(self, sublink: Sublink, id: int) -> None:
         """
-        EbCommandFile constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -330,8 +320,6 @@ class EbCommandVersion(EbCommandEntry):
     """
     def __init__(self, sublink: Sublink, id: int, files: List[EbCommandFile] = None) -> None:
         """
-        EbCommandVersion constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -372,6 +360,16 @@ class EbCommandDistribution(EbCommandEntry):
     The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.
     """
     def __init__(self, sublink: Sublink, id: int, versions: List[EbCommandVersion] = None) -> None:
+        """
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        versions : List[EbCommandVersion], optional
+            A list of versions or a single version entry. Defaults to None
+        """
         super().__init__(sublink, id, EbCommandVersion, versions)
         self.versions = self.subentries
 
@@ -403,6 +401,16 @@ class EbCommandProject(EbCommandEntry):
     The EbCommandProject class represents a project in the EbCommand hierarchy.
     """
     def __init__(self, sublink: Sublink, id: int, distributions: List[EbCommandDistribution] = None) -> None:
+        """
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        distributions : List[EbCommandDistribution], optional
+            A list of distributions or a single distribution. Defaults to None
+        """
         super().__init__(sublink, id, EbCommandDistribution, distributions)
         self.distributions = self.subentries
 
@@ -436,8 +444,6 @@ class EbCommandDownloadFile:
     """
     def __init__(self, file: EbCommandFile, version: EbCommandVersion, distribution: EbCommandDistribution, project: EbCommandProject) -> None:
         """
-        EbCommandDownloadFile constructor
-
         Parameters
         ----------
         file : EbCommandFile
@@ -506,8 +512,6 @@ class EbCommand:
 
     def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -> None:
         """
-        EbCommand constructor
-
         Parameters
         ----------
         user : str
