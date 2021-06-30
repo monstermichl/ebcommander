@@ -1,5 +1,5 @@
 # Overview
-EBCommander is intended as an interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline. The Python documentation can be found in [doc](doc/ebcommander/ebcommander.html).
+EBCommander is intended as an interaction layer between Python and EBCommand (https://command.elektrobit.com). It can either be used as a module or directly via Commandline. The Python documentation can be found in [doc](https://htmlpreview.github.io/?https://github.com/monstermichl/ebcommander/blob/master/doc/ebcommander/ebcommander.html).
 
 ---
 
