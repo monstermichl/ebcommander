@@ -65,8 +65,6 @@ class Size:
     &#34;&#34;&#34;
     def __init__(self, value: float, unit: SizeUnit) -&gt; None:
         &#34;&#34;&#34;
-        Size constructor
-
         Parameters
         ----------
         value : float
@@ -125,8 +123,6 @@ class Sublink:
     &#34;&#34;&#34;
     def __init__(self, url_base: str, tag: Tag) -&gt; None:
         &#34;&#34;&#34;
-        Sublink constructor
-
         Parameters
         ----------
         url_base : str
@@ -157,8 +153,6 @@ class EbCommandSublink(Sublink):
     &#34;&#34;&#34;
     def __init__(self, url_base: str, tag: Tag) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandSublink constructor
-
         Parameters
         ----------
         url_base : str
@@ -199,8 +193,6 @@ class EbCommandEntry:
     &#34;&#34;&#34;
     def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandEntry constructor
-
         Parameters
         ----------
         sublink : EbCommandSublink
@@ -308,8 +300,6 @@ class EbCommandFile(EbCommandEntry):
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandFile constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -358,8 +348,6 @@ class EbCommandVersion(EbCommandEntry):
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, files: List[EbCommandFile] = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandVersion constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -400,6 +388,16 @@ class EbCommandDistribution(EbCommandEntry):
     The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, versions: List[EbCommandVersion] = None) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        versions : List[EbCommandVersion], optional
+            A list of versions or a single version entry. Defaults to None
+        &#34;&#34;&#34;
         super().__init__(sublink, id, EbCommandVersion, versions)
         self.versions = self.subentries
 
@@ -431,6 +429,16 @@ class EbCommandProject(EbCommandEntry):
     The EbCommandProject class represents a project in the EbCommand hierarchy.
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, distributions: List[EbCommandDistribution] = None) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        distributions : List[EbCommandDistribution], optional
+            A list of distributions or a single distribution. Defaults to None
+        &#34;&#34;&#34;
         super().__init__(sublink, id, EbCommandDistribution, distributions)
         self.distributions = self.subentries
 
@@ -464,8 +472,6 @@ class EbCommandDownloadFile:
     &#34;&#34;&#34;
     def __init__(self, file: EbCommandFile, version: EbCommandVersion, distribution: EbCommandDistribution, project: EbCommandProject) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandDownloadFile constructor
-
         Parameters
         ----------
         file : EbCommandFile
@@ -534,8 +540,6 @@ class EbCommand:
 
     def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommand constructor
-
         Parameters
         ----------
         user : str
@@ -910,7 +914,6 @@ class EbCommand:
 </code></dt>
 <dd>
 <div class="desc"><p>The EbCommand class represents the interface to interact with the Elekrobit Command Server.</p>
-<p>EbCommand constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>user</code></strong> :&ensp;<code>str</code></dt>
@@ -955,8 +958,6 @@ class EbCommand:
 
     def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommand constructor
-
         Parameters
         ----------
         user : str
@@ -1519,17 +1520,14 @@ class EbCommand:
 </code></dt>
 <dd>
 <div class="desc"><p>The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.</p>
-<p>EbCommandEntry constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
-<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
 <dd>EbCommandSublink which represents the actual entry location</dd>
 <dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
 <dd>EB Command reference id</dd>
-<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code>, optional</dt>
-<dd>Specifies of which type the subentries are. Defaults to None</dd>
-<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code>, optional</dt>
-<dd>List of subentries. Defaults to None</dd>
+<dt><strong><code>versions</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandVersion" href="#ebcommander.ebcommander.EbCommandVersion">EbCommandVersion</a>]</code>, optional</dt>
+<dd>A list of versions or a single version entry. Defaults to None</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -1540,6 +1538,16 @@ class EbCommand:
     The EbCommandDistribution class represents a distribution in the EbCommand hierarchy.
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, versions: List[EbCommandVersion] = None) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        versions : List[EbCommandVersion], optional
+            A list of versions or a single version entry. Defaults to None
+        &#34;&#34;&#34;
         super().__init__(sublink, id, EbCommandVersion, versions)
         self.versions = self.subentries
 
@@ -1641,7 +1649,6 @@ class EbCommand:
 <dd>
 <div class="desc"><p>The EbCommandDownloadFile is a collection of all necessary information to download
 a file from EBCommand.</p>
-<p>EbCommandDownloadFile constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>file</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandFile" href="#ebcommander.ebcommander.EbCommandFile">EbCommandFile</a></code></dt>
@@ -1664,8 +1671,6 @@ a file from EBCommand.</p>
     &#34;&#34;&#34;
     def __init__(self, file: EbCommandFile, version: EbCommandVersion, distribution: EbCommandDistribution, project: EbCommandProject) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandDownloadFile constructor
-
         Parameters
         ----------
         file : EbCommandFile
@@ -1712,7 +1717,6 @@ a file from EBCommand.</p>
 <dd>
 <div class="desc"><p>The EbCommandEntry class represents the base class for an entry in the EbCommand
 hierarchy (e.g. project, distribution, version, file)</p>
-<p>EbCommandEntry constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
@@ -1735,8 +1739,6 @@ hierarchy (e.g. project, distribution, version, file)</p>
     &#34;&#34;&#34;
     def __init__(self, sublink: EbCommandSublink, id: int, subentry_type: type = None, subentries: list = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandEntry constructor
-
         Parameters
         ----------
         sublink : EbCommandSublink
@@ -1993,7 +1995,6 @@ hierarchy (e.g. project, distribution, version, file)</p>
 </code></dt>
 <dd>
 <div class="desc"><p>The EbCommandFile class represents a file in the EbCommand hierarchy</p>
-<p>EbCommandFile constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
@@ -2011,8 +2012,6 @@ hierarchy (e.g. project, distribution, version, file)</p>
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandFile constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -2119,17 +2118,14 @@ hierarchy (e.g. project, distribution, version, file)</p>
 </code></dt>
 <dd>
 <div class="desc"><p>The EbCommandProject class represents a project in the EbCommand hierarchy.</p>
-<p>EbCommandEntry constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
-<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.EbCommandSublink" href="#ebcommander.ebcommander.EbCommandSublink">EbCommandSublink</a></code></dt>
+<dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
 <dd>EbCommandSublink which represents the actual entry location</dd>
 <dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
 <dd>EB Command reference id</dd>
-<dt><strong><code>subentry_type</code></strong> :&ensp;<code>type</code>, optional</dt>
-<dd>Specifies of which type the subentries are. Defaults to None</dd>
-<dt><strong><code>subentries</code></strong> :&ensp;<code>list</code>, optional</dt>
-<dd>List of subentries. Defaults to None</dd>
+<dt><strong><code>distributions</code></strong> :&ensp;<code>List[<a title="ebcommander.ebcommander.EbCommandDistribution" href="#ebcommander.ebcommander.EbCommandDistribution">EbCommandDistribution</a>]</code>, optional</dt>
+<dd>A list of distributions or a single distribution. Defaults to None</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -2140,6 +2136,16 @@ hierarchy (e.g. project, distribution, version, file)</p>
     The EbCommandProject class represents a project in the EbCommand hierarchy.
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, distributions: List[EbCommandDistribution] = None) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        sublink : Sublink
+            EbCommandSublink which represents the actual entry location
+        id : int
+            EB Command reference id
+        distributions : List[EbCommandDistribution], optional
+            A list of distributions or a single distribution. Defaults to None
+        &#34;&#34;&#34;
         super().__init__(sublink, id, EbCommandDistribution, distributions)
         self.distributions = self.subentries
 
@@ -2241,7 +2247,6 @@ hierarchy (e.g. project, distribution, version, file)</p>
 <dd>
 <div class="desc"><p>The EbCommandSublink class inherits from Sublink. It contains (if found) tag siblings
 information (e.g. upload time, size) which belong to the downloadable EB file</p>
-<p>EbCommandSublink constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>url_base</code></strong> :&ensp;<code>str</code></dt>
@@ -2260,8 +2265,6 @@ information (e.g. upload time, size) which belong to the downloadable EB file</p
     &#34;&#34;&#34;
     def __init__(self, url_base: str, tag: Tag) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandSublink constructor
-
         Parameters
         ----------
         url_base : str
@@ -2313,7 +2316,6 @@ information (e.g. upload time, size) which belong to the downloadable EB file</p
 </code></dt>
 <dd>
 <div class="desc"><p>The EbCommandVersion class represents a distribution version in the EbCommand hierarchy.</p>
-<p>EbCommandVersion constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>sublink</code></strong> :&ensp;<code><a title="ebcommander.ebcommander.Sublink" href="#ebcommander.ebcommander.Sublink">Sublink</a></code></dt>
@@ -2333,8 +2335,6 @@ information (e.g. upload time, size) which belong to the downloadable EB file</p
     &#34;&#34;&#34;
     def __init__(self, sublink: Sublink, id: int, files: List[EbCommandFile] = None) -&gt; None:
         &#34;&#34;&#34;
-        EbCommandVersion constructor
-
         Parameters
         ----------
         sublink : Sublink
@@ -2444,7 +2444,6 @@ information (e.g. upload time, size) which belong to the downloadable EB file</p
 </code></dt>
 <dd>
 <div class="desc"><p>The Size class represents a file size by its value and by its unit</p>
-<p>Size constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
@@ -2462,8 +2461,6 @@ information (e.g. upload time, size) which belong to the downloadable EB file</p
     &#34;&#34;&#34;
     def __init__(self, value: float, unit: SizeUnit) -&gt; None:
         &#34;&#34;&#34;
-        Size constructor
-
         Parameters
         ----------
         value : float
@@ -2638,7 +2635,6 @@ def parse(s: str) -&gt; Size | None:
 <dd>
 <div class="desc"><p>The Sublink class represents an HTML href-tag but also stores its text, its full
 URL - based on the URL base path - and its parameters</p>
-<p>Sublink constructor</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>url_base</code></strong> :&ensp;<code>str</code></dt>
@@ -2657,8 +2653,6 @@ URL - based on the URL base path - and its parameters</p>
     &#34;&#34;&#34;
     def __init__(self, url_base: str, tag: Tag) -&gt; None:
         &#34;&#34;&#34;
-        Sublink constructor
-
         Parameters
         ----------
         url_base : str
