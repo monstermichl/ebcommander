@@ -112,10 +112,8 @@ class Sublink:
         self.path   = url_parsed.path
         self.params = { key: value[0] for key, value in parse_qs(url_parsed.query).items() }
 
-        """
-        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
-        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
-        """
+        # IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        # https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
 
 
 class EbCommandSublink(Sublink):
@@ -152,10 +150,8 @@ class EbCommandSublink(Sublink):
                     elif size:
                         self.size = size
 
-        """
-        IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
-        https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
-        """
+        # IMPORTANT: The tag variable must not no be stored in the object to avoid deepcopy issues as mentioned in this post
+        # https://www.reddit.com/r/learnpython/comments/7fi03p/im_getting_a_recursion_error_and_im_not_sure_why/dqc5up7?utm_source=share&utm_medium=web2x&context=3
 
 
 class EbCommandEntry:
@@ -510,7 +506,7 @@ class EbCommand:
     # patterns
     _PATTERN_ID           = r'\d+'
 
-    def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None) -> None:
+    def __init__(self, user: str, password: str, proxy_http: str = None, proxy_https: str = None, verify_certificate: bool = True) -> None:
         """
         Parameters
         ----------
@@ -522,11 +518,14 @@ class EbCommand:
             HTTP proxy address (e.g. http://localhost:1234). Defaults to None
         proxy_https : str, optional
             HTTPS proxy address (e.g. https://localhost:1234). Defaults to None
+        verify_certificate : boolean, optional
+            If True, HTTPS certificate is beeing verified. Defaults to True
         """
-        self._session     = None
-        self._user        = user
-        self._password    = password
-        self._proxies     = {}
+        self._session            = None
+        self._user               = user
+        self._password           = password
+        self._proxies            = {}
+        self._verify_certificate = verify_certificate
 
         if proxy_http:
             self._proxies['http'] = proxy_http
@@ -574,7 +573,7 @@ class EbCommand:
         """
         return dump([project.to_dict() for project in self._projects])
 
-    def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False):
+    def download(self, path_output: str, filename_only: bool = False, newer_only: bool = False) -> None:
         """
         Downloads the retrieved files to the specified folder
 
@@ -850,7 +849,7 @@ class EbCommand:
         Tag
             If the request was successful and the returned data was HTML, a BeautifulSoup4 tag element. If the request was successful and the returned data was not HTML, the requested content. Else, None
         """
-        params_common = { 'proxies': self._proxies, 'verify': False }
+        params_common = { 'proxies': self._proxies, 'verify': self._verify_certificate }
         content       = None
 
         if not self._session:
