@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--verify'     , help='If set, HTTPS certificate is verified on requests', required=False, action='store_true')
 
     args    = parser.parse_args()
-    command = EbCommand(args.user, args.password, args.proxy_http, args.proxy_https)
+    command = EbCommand(args.user, args.password, args.proxy_http, args.proxy_https, args.verify)
 
     def write_file(path: str, content: str):
         with open(path, 'w') as f:
