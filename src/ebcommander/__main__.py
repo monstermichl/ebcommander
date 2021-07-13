@@ -12,19 +12,19 @@ def main():
     """
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--user'       , help='EBCommand username'                               , required=True , type=str           )
-    parser.add_argument('--password'   , help='EBCommand user password'                          , required=True , type=str           )
-    parser.add_argument('--proxy-http' , help='HTTP proxy (e.g. http://localhost:1234)'          , required=False, type=str           )
-    parser.add_argument('--proxy-https', help='HTTPS proxy (e.g. https://localhost:1234)'        , required=False, type=str           )
-    parser.add_argument('--json'       , help='JSON file to which filtered data shall be written', required=False, type=str           )
-    parser.add_argument('--yaml'       , help='YAML file to which filtered data shall be written', required=False, type=str           )
-    parser.add_argument('--filter'     , help='File filter pattern'                              , required=False, type=str           )
-    parser.add_argument('--download'   , help='Path to which the files shall be downloaded'      , required=False, type=str           )
-    parser.add_argument('--config'     , help='Path to config for more complex setups'           , required=False, type=str           )
-    parser.add_argument('--verify'     , help='If set, HTTPS certificate is verified on requests', required=False, action='store_true')
+    parser.add_argument('--user'                , help='EBCommand username'                               , required=True , type=str           )
+    parser.add_argument('--password'            , help='EBCommand user password'                          , required=True , type=str           )
+    parser.add_argument('--proxy-http'          , help='HTTP proxy (e.g. http://localhost:1234)'          , required=False, type=str           )
+    parser.add_argument('--proxy-https'         , help='HTTPS proxy (e.g. https://localhost:1234)'        , required=False, type=str           )
+    parser.add_argument('--json'                , help='JSON file to which filtered data shall be written', required=False, type=str           )
+    parser.add_argument('--yaml'                , help='YAML file to which filtered data shall be written', required=False, type=str           )
+    parser.add_argument('--filter'              , help='File filter pattern'                              , required=False, type=str           )
+    parser.add_argument('--download'            , help='Path to which the files shall be downloaded'      , required=False, type=str           )
+    parser.add_argument('--config'              , help='Path to config for more complex setups'           , required=False, type=str           )
+    parser.add_argument('--prevent-verification', help='If set, HTTPS certificate is not verified'        , required=False, action='store_true')
 
     args    = parser.parse_args()
-    command = EbCommand(args.user, args.password, args.proxy_http, args.proxy_https, args.verify)
+    command = EbCommand(args.user, args.password, args.proxy_http, args.proxy_https, not args.prevent_verification)
 
     def write_file(path: str, content: str):
         with open(path, 'w') as f:
