@@ -28,36 +28,40 @@ content = None
 
 # Read setup.cfg
 with open(FILE_SETUP, 'r') as f:
-    content = f.read()
+    string_version = f'{version_major.version}.{version_minor.version}.{version_patch.version}'
+    content        = f.read()
+    content_new    = re.sub(r'version\s*=\s*.*', f'version = {string_version}', content)
 
-if content:
-    result = None
+if not content:
+    print(f'File {FILE_SETUP} not found')
+elif content_new == content:
+    print(f'Version {string_version} already exists')
+elif content_new != content:
 
-    # Write updated setup.cfg and create tag
+    # Write updated setup.cfg
     with open(FILE_SETUP, 'w') as f:
-        string_version = f'{version_major.version}.{version_minor.version}.{version_patch.version}'
-        string_tag     = f'v{string_version}'
-        content        = re.sub(r'\s*version\s*=\s*.*', f'version = {string_version}', content)
+        f.write(content_new)
         
-        f.write(content)
-        result = system(f'git commit {FILE_SETUP} -m "Create tag version {string_version}')
-
-    if result == 0:
-        result = system(f'git tag {string_tag}')
-    else:
-        print(f'Error while committing {FILE_SETUP} changes')
-
-    # If tagging ok, push if allowed
-    if result == 0:
-        print(f'Tag {string_tag} created')
-
-        input_push = input('Push tag [y/n]? ').lower()
-        if len(input_push) > 0 and input_push[0] == 'y':
-            if system(f'git push origin {string_tag}') == 0:
-                print(f'Tag {string_tag} pushed')
-            else:
-                print(f'Error while pushing tag {string_tag}')
+        # Commit setup.cfg change
+        if system(f'git commit {FILE_SETUP} -m "Create tag version {string_version}') != 0:
+            print(f'Error while committing {FILE_SETUP} changes')
+            
         else:
-            print(f'Tag {string_tag} was not pushed')
-    else:
-        print(f'Error while creating tag {string_tag}')
+            string_tag = f'v{string_version}'
+
+            # Create tag
+            if system(f'git tag {string_tag}') == 0:
+                print(f'Tag {string_tag} created')
+
+                input_push = input('Push tag [y/n]? ').lower()
+                if len(input_push) > 0 and input_push[0] == 'y':
+
+                    # Push tag
+                    if system(f'git push origin {string_tag}') == 0:
+                        print(f'Tag {string_tag} pushed')
+                    else:
+                        print(f'Error while pushing tag {string_tag}')
+                else:
+                    print(f'Tag {string_tag} was not pushed')
+            else:
+                print(f'Error while creating tag {string_tag}')
