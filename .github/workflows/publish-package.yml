@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Prepare Github environment
       uses: actions/checkout@v2
-    - name: Set up Python
+    - name: Prepare Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.7'
