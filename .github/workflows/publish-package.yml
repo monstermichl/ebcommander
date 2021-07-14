@@ -32,8 +32,8 @@ jobs:
       run: |
         echo '🔨'
         python -m build
+    - run : echo '🚀'
     - name: Publish package
-      run : echo '🚀'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
