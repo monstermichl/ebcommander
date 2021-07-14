@@ -17,17 +17,23 @@ jobs:
     steps:
     - name: Prepare Github environment
       uses: actions/checkout@v2
+      run : echo '🐙'
     - name: Prepare Python
       uses: actions/setup-python@v2
+      run : echo '🐍'
       with:
         python-version: '3.7'
     - name: Install dependencies
       run: |
+        echo '💾'
         python -m pip install --upgrade pip
         pip install build
     - name: Build package
-      run: python -m build
+      run: |
+        echo '🔨'
+        python -m build
     - name: Publish package
+      run : echo '🚀'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
