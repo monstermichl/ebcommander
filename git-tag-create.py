@@ -42,26 +42,26 @@ elif content_new != content:
     with open(FILE_SETUP, 'w') as f:
         f.write(content_new)
         
-        # Commit setup.cfg change
-        if system(f'git commit {FILE_SETUP} -m "Create tag version {string_version}') != 0:
-            print(f'Error while committing {FILE_SETUP} changes')
-            
-        else:
-            string_tag = f'v{string_version}'
+    # Commit setup.cfg change
+    if system(f'git commit {FILE_SETUP} -m "Create tag version {string_version}') != 0:
+        print(f'Error while committing {FILE_SETUP} changes')
+        
+    else:
+        string_tag = f'v{string_version}'
 
-            # Create tag
-            if system(f'git tag {string_tag}') == 0:
-                print(f'Tag {string_tag} created')
+        # Create tag
+        if system(f'git tag {string_tag}') == 0:
+            print(f'Tag {string_tag} created')
 
-                input_push = input('Push tag [y/n]? ').lower()
-                if len(input_push) > 0 and input_push[0] == 'y':
+            input_push = input('Push tag [y/n]? ').lower()
+            if len(input_push) > 0 and input_push[0] == 'y':
 
-                    # Push tag
-                    if system(f'git push origin {string_tag}') == 0:
-                        print(f'Tag {string_tag} pushed')
-                    else:
-                        print(f'Error while pushing tag {string_tag}')
+                # Push tag
+                if system(f'git push origin {string_tag}') == 0:
+                    print(f'Tag {string_tag} pushed')
                 else:
-                    print(f'Tag {string_tag} was not pushed')
+                    print(f'Error while pushing tag {string_tag}')
             else:
-                print(f'Error while creating tag {string_tag}')
+                print(f'Tag {string_tag} was not pushed')
+        else:
+            print(f'Error while creating tag {string_tag}')
