@@ -8,6 +8,9 @@
 
 name: Publish Python Package
 on:
+  create:
+    tags:
+      - 'v*'
   push:
     tags:
       - 'v*'
